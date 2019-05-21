@@ -57,3 +57,26 @@ exports.insertCalendarData = function(req,res){
 
 
 };
+
+exports.getCalendarData = function(req,res){
+
+    var pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("getCalendarData API Request");
+
+    var value = [];
+
+        console.log(req.query);
+        var param = req.query.CA_EVDATE + '%';
+        
+        value.push(param);
+        
+        pool.query(querys.getCalendarData, value, function(err,rows){
+            if(err) {
+                commonModule.errResultJSON(err,res);
+            } else {
+                console.log(rows);
+                res.json({"Error" : false, "Message" : "Success" , "data" : rows});
+            }
+        });
+
+};
