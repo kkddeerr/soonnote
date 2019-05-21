@@ -9,45 +9,51 @@ const commonModule = require('./../../../modules/commonModule');
  * @param res
  */
 exports.insertCalendarData = function(req,res){
+    
+    //CA_ID,CA_EVDATE,CA_STEXT,CA_ERDATE,CA_AEDATE,CA_USEYN
+    //아이디,이벤트날짜,이벤트문구,생성날짜,수정날짜,사용유무
+
+    var pool = require('./../../../DBConnect/mariaDBPool').pool;
     console.log("insertCalendarData API Request");
+    //post: console.log(req.body);
+    //get : console.log(req.query);
+    var value = [];
 
-        var pool = require('./../../../DBConnect/mariaDBPool').pool;
-        var value = [];
-        var baseDate = req.query["baseDate"] ? req.query["baseDate"] : null;
-        var baseTime = req.query["baseTime"] ? req.query["baseTime"] : null;
-        if(baseDate !== null && baseTime !== null) {
-            var errString = '';
-            if(typeof baseDate !== 'string'){
-                errString +='baseDate';
+        value.push(req.body.CA_ID);
+        value.push(req.body.CA_EVDATE);
+        value.push(req.body.CA_STEXT);
+        value.push(req.body.CA_ERDATE);
+        value.push(req.body.CA_AEDATE);
+        value.push('Y');
+        
+        pool.query(querys.insertContactInfo, value, function(err,rows){
+            if(err) {
+                commonModule.errResultJSON(err,res);
+            } else {
+                res.json({"Error" : false, "Message" : "Success" , "data" : []});
             }
-            if(typeof baseTime !== 'string'){
-                errString += ' baseTime';
-            }
+        });
+        // var value = [];
+        //         value.push(baseDate);
+        //         value.push(baseTime);
+        //         value.push(userId);
+        //         pool.query(querys.getTodayWeather, value, function(err,rows){
+        //             if(err) {
+        //                 commonModule.errResultJSON(err, res);
+        //             } else {
+        //                 if(rows.length > 0){
+        //                     res.json({"Error" : false, "Message" : "Success", "data" : rows[0]});
+        //                 }else{
+        //                     res.json({"Error" : false, "Message" : "no Data check weather setting", "data" : []});
+        //                 }
+        //             }
 
-            if(errString !== ''){
-                commonModule.clientSetErrorJSON(errString + " Parameter is only Enable String Type", res);
-            }else{
-                logger.debug("getTodayWeather : params : baseDate => ["+ baseDate + "], baseTime=> ["+baseTime+"]");
-                value.push(baseDate);
-                value.push(baseTime);
-                value.push(userId);
-                pool.query(querys.getTodayWeather, value, function(err,rows){
-                    if(err) {
-                        commonModule.errResultJSON(err, res);
-                    } else {
-                        if(rows.length > 0){
-                            res.json({"Error" : false, "Message" : "Success", "data" : rows[0]});
-                        }else{
-                            res.json({"Error" : false, "Message" : "no Data check weather setting", "data" : []});
-                        }
-                    }
+        //         });
 
-                });
-
-            }
-        } else {
-            commonModule.clientSetErrorJSON("Setting Need Parameters", res);
-        }
+        //     }
+        // } else {
+        //     commonModule.clientSetErrorJSON("Setting Need Parameters", res);
+        // }
 
 
 };

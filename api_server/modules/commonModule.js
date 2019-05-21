@@ -1,5 +1,5 @@
 exports.errResultJSON = function (err, res) {
-    logger.error(err);
+    console.log(err);
     var errMsg = "";
     if(err.hasOwnProperty("code")){
         errMsg = err.code;

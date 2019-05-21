@@ -7,7 +7,7 @@ var config = {
         host : '222.117.225.28', 
         user     : 'root',  
         password : '1', // 
-        database : 'test',
+        database : 'soonnote',
         debug    :  false,
         connectionLimit:100,  
         queueLimit : 10000,
