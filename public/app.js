@@ -1,6 +1,11 @@
 
 $( document ).ready(function() {
 
+	//페이지 추가시 
+	// routes[이름] = {
+	// 	url: '#/URL',
+	// 	templateUrl: 'view/html이름'
+	// };
     var routes = {},
 			defaultRoute ='main';
 

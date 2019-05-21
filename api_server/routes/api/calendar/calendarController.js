@@ -26,7 +26,7 @@ exports.insertCalendarData = function(req,res){
         value.push(req.body.CA_AEDATE);
         value.push('Y');
         
-        pool.query(querys.insertContactInfo, value, function(err,rows){
+        pool.query(querys.insertCalendarInfo, value, function(err,rows){
             if(err) {
                 commonModule.errResultJSON(err,res);
             } else {
