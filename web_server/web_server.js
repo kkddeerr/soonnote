@@ -24,7 +24,6 @@ app.get('/', function (req, res) {
     }
 });
 
-
 try{
     app.listen(port);
 }catch(error){

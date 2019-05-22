@@ -19,6 +19,11 @@ $( document ).ready(function() {
 			templateUrl: 'view/calendar.html'
 		};
 
+		routes['join'] = {
+			url: '#/join',
+			templateUrl: 'view/join.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute);
