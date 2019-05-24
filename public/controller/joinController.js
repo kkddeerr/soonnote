@@ -10,9 +10,9 @@ $(document).ready(function() {
                 $("#loc_num").append(option);
             }
         },
-        error: (e) => {
-            console.log(e);
-            alert(e.message);
+        error: (xhr, status, error) => {
+            console.log(error);
+            alert(error);
         }
     });
 
@@ -30,9 +30,9 @@ $(document).ready(function() {
                     $("#sn_code").append(option);
                 }
             },
-            error: (e) => {
-                console.log(e.message);
-                alert(e.message);
+            error: (xhr, status, error) => {
+                console.log(error);
+                alert(error);
             }
         });
     });
