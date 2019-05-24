@@ -6,7 +6,7 @@ $(document).ready(function() {
         success: (responseData) => {
             let data = responseData.data;
             for (let i = 0; i < data.length; i++) {
-                let option = $(`<option value="{data[i].LOC_NUM}">{data[i].LOC_NAME}</option>`);
+                let option = $("<option value='"+data[i].LOC_NUM+"'>"+data[i].LOC_NAME+"</option>");
                 $("#loc_num").append(option);
             }
         },
@@ -26,7 +26,7 @@ $(document).ready(function() {
             success: (responseData) => {
                 let data = responseData.data;
                 for (let i = 0; i < data.length; i++) {
-                    let option = $(`<option value="{data[i].SC_NUM}">{data[i].SC_NAME}</option>`);
+                    let option = $("<option value='"+data[i].SC_NUM+"'>"+data[i].SC_NAME+"</option>");
                     $("#sn_code").append(option);
                 }
             },
