@@ -11,8 +11,8 @@ $(document).ready(function() {
             }
         },
         error: (e) => {
-            console.log(e['message']);
-            alert(e['message']);
+            console.log(e);
+            alert(e);
         }
     });
 
