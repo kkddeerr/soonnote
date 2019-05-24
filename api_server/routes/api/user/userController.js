@@ -1,6 +1,6 @@
-const eventListener = require('../../../events/eventIndex');
-const querys = require('../../../apiServerQuerys');
-const commonModule = require('../../../modules/commonModule');
+const eventListener = require('./../../../events/eventIndex');
+const querys = require('./../../../apiServerQuerys');
+const commonModule = require('./../../../modules/commonModule');
 
 /**
  * Join API
