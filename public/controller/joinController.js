@@ -4,15 +4,15 @@ $(document).ready(function() {
         type: "get",
         dataType: "json",
         success: (responseData) => {
-            let data = responseData['data'];
+            let data = responseData.data;
             for (let i = 0; i < data.length; i++) {
-                let option = $(`<option value="{data[i]['LOC_NUM']}">{data[i]['LOC_NAME']}</option>`);
+                let option = $(`<option value="{data[i].LOC_NUM}">{data[i].LOC_NAME}</option>`);
                 $("#loc_num").append(option);
             }
         },
         error: (e) => {
-            console.log(e);
-            alert(e);
+            console.log(e.message);
+            alert(e.message);
         }
     });
 
@@ -24,15 +24,15 @@ $(document).ready(function() {
             dataType: "json",
             data: {"loc_num":selectNum},
             success: (responseData) => {
-                let data = responseData['data'];
+                let data = responseData.data;
                 for (let i = 0; i < data.length; i++) {
-                    let option = $(`<option value="{data[i]['SC_NUM']}">{data[i]['SC_NAME']}</option>`);
+                    let option = $(`<option value="{data[i].SC_NUM}">{data[i].SC_NAME}</option>`);
                     $("#sn_code").append(option);
                 }
             },
             error: (e) => {
-                console.log(e['message']);
-                alert(e['message']);
+                console.log(e.message);
+                alert(e.message);
             }
         });
     });
