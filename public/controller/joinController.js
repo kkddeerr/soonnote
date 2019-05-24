@@ -11,7 +11,7 @@ $(document).ready(function() {
             }
         },
         error: (e) => {
-            console.log(e.message);
+            console.log(e);
             alert(e.message);
         }
     });
