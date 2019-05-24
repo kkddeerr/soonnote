@@ -1,6 +1,6 @@
 $(document).ready(function() {
     $.ajax({
-        url: "localhost:8071/api/user/getAllLocation",
+        url: "222.117.225.28:8071/api/user/getAllLocation",
         type: "get",
         dataType: "json",
         success: (responseData) => {
@@ -19,7 +19,7 @@ $(document).ready(function() {
     $("#loc_num").change(()=>{
         let selectNum = $("#loc_num option:selected").val();
         $.ajax({
-            url: "localhost:8071/api/user/getLocSchools",
+            url: "222.117.225.28:8071/api/user/getLocSchools",
             type: "get",
             dataType: "json",
             data: {"loc_num":selectNum},
