@@ -17,7 +17,7 @@ exports.getAllLocation = (req, res) => {
     // LOC_NUM, LOC_NAME
     // 지역번호, 지역이름
 
-    let pool = require('../../../DBConnect/mariaDBPool').pool;
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
     console.log("getAllLocation API Request");
 
     pool.query(querys.getAllLocations, (err, rows) => {
@@ -42,7 +42,7 @@ exports.getLocSchools = (req, res) => {
     // SC_NUM, SC_NAME
     // 학교번호, 학교이름
 
-    let pool = require('../../../DBConnect/mariaDBPool').pool;
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
     console.log("getLocSchools API Request");
 
     // 쿼리 prepared statement
