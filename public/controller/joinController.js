@@ -52,7 +52,7 @@ $(document).ready(function() {
             success: (responseData) => {
                 let data = responseData.data;
                 if(parseInt(data[0].count) === 0) { // 해당 아이디의 count 가 0 이라면 즉, 중복되지 않는다면
-                    $("#checked").val() = "true";
+                    $("#checked").val("true");
                     alert("사용가능한 아이디입니다.");
                 } else { // 해당 아이디의 count 가 0 이 아니라면 즉, 중복된다면
                     alert("중복되는 아이디입니다. 다시 입력해주세요");
