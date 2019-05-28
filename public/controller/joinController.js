@@ -40,7 +40,7 @@ $(document).ready(function() {
         let checkID = $("#user_id").val();
         if(checkID === "") {
             alert("아이디를 입력해주세요.");
-            // $("#user_id").focus();
+            $("#user_id").focus();
             return;
         }
 
