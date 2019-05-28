@@ -45,7 +45,7 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: "",
+            url: "http://222.117.225.28:8071/api/user/dupleCheck",
             type: "get",
             dataType: "json",
             data: {"checkID":checkID},
