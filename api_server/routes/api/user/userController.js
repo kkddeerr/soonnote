@@ -35,7 +35,7 @@ exports.getAllLocation = (req, res) => {
 
 /**
  * 지역 번호에 따른 학교 반환
- * @param LOC_NUM
+ * @param loc_num
  * @return json
  */
 exports.getLocSchools = (req, res) => {
@@ -50,6 +50,32 @@ exports.getLocSchools = (req, res) => {
     value.push(req.query.loc_num);
 
     pool.query(querys.getLocSchools, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
+
+/**
+ * 아이디 중복체크
+ * @param checkID
+ * @return json
+ */
+exports.dupleCheck = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("dupleCheck API Request");
+
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.query.checkID);
+
+    pool.query(querys.dupleCheck, value, (err, rows) => {
         if(err) {
             commonModule.errResultJSON(err, res);
         } else {

@@ -10,7 +10,8 @@ const querys = {
      * 사용자 관련 쿼리
     *******************************/
     getAllLocations : "select * from sn_location;",
-    getLocSchools : "select SC_NUM, SC_NAME from sn_schools where LOC_NUM = ?;"
+    getLocSchools : "select SC_NUM, SC_NAME from sn_schools where LOC_NUM = ?;",
+    dupleCheck : "select count(*) as count from sn_users where USER_ID = ?;"
 };
 
 module.exports = querys;
