@@ -96,6 +96,11 @@ $(document).ready(function() {
             return false;
         }
 
+        if($("#checked").val() === "false") {
+            alert("아이디 중복체크를 해주세요.");
+            return false;
+        }
+
         //$("#joinForm").submit();
     });
 });
