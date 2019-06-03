@@ -2,7 +2,7 @@
 
 <h1>회원가입</h1>
 <div>
-    <form action="" method="POST">
+    <form id="joinForm" action="" method="POST">
         <p>아이디 : <input type="text" name="user_id" id="user_id" placeholder="아이디"><button type="button" id="dupleCheck">중복체크</button></p>
         <input type="hidden" id="checked" value="false">
         <p>비밀번호 : <input type="password" name="user_pw" id="user_pw" placeholder="비밀번호"></p>
@@ -15,6 +15,7 @@
                 <option value="">--</option>
             </select>
         </p>
-        <p>학번 : <input type="text" name="user_hak" id="user_hak" placeholder="학번"></p>
+        <p>학번 : <input type="text" name="user_hak" id="user_hak" placeholder="ex) 19"></p>
+        <p><button type="button" id="joinSubmitBtn"></button></p>
     </form>
 </div>
