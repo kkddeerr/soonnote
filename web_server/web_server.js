@@ -1,4 +1,5 @@
 var express = require('express');
+var opener = require('opener');
 var app = express();
 
 
@@ -12,6 +13,8 @@ var changeDir = __dirname.replace(/\web_server/g,'');
 //__dirname은 node에서 제공, 뒤는 정규식
 
 app.use(express.static(changeDir + 'public'));
+
+opener("http://localhost:8091");
 
 app.get('/', function (req, res) {
     try{
