@@ -45,7 +45,20 @@ CREATE TABLE SN_LIKEIT
 
 
 
-
-
+/*개발자 정보공유 및 이슈 테이블*/
+CREATE TABLE SN_ISSUE
+(
+    IS_NO INT,              /*PK*/
+    IS_TITLE VARCHAR(64),   /*제목*/
+    IS_CONTENT VARCHAR(100),/*내용*/
+    IS_PRIORTY INT,         /*공지우선순위*/
+    IS_LOOKUP_COUNT INT,    /*조회수*/
+    IS_USER VARCHAR(32),    /*작성자*/
+    PC_DT DATE,             /*수정일자*/  
+    FST_PC_DT DATETIME,     /*최조개시일자*/
+    DEL_YN VARCHAR(2),      /*삭제여부*/
+    
+    PRIMARY KEY(IS_NO)
+)
 
 
