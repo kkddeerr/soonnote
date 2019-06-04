@@ -14,7 +14,7 @@ var changeDir = __dirname.replace(/\web_server/g,'');
 
 app.use(express.static(changeDir + 'public'));
 
-opener("http://localhost:8091");
+//opener("http://localhost:8091");
 
 app.get('/', function (req, res) {
     try{

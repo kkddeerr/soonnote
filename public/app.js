@@ -24,6 +24,11 @@ $( document ).ready(function() {
 			templateUrl: 'view/join.html'
 		};
 
+		routes['ccm'] = {
+			url: '#/ccm',
+			templateUrl: 'view/ccm.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute);
