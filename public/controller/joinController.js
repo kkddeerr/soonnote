@@ -67,7 +67,7 @@ $(document).ready(function() {
     });
 
     $("#joinSubmitBtn").click(() => {
-        let user_id = $("$user_id").val(); // 아이디
+        let user_id = $("#user_id").val(); // 아이디
         if(user_id === "") {
             alert("아이디를 입력해주세요.");
             $("#user_id").focus();
