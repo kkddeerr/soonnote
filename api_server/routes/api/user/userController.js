@@ -109,8 +109,11 @@ exports.joinUser = (req, res) => {
         if(err) {
             commonModule.errResultJSON(err, res);
         } else {
-            res.write("<script type='text/javascript'>alert('회원가입이 완료되었습니다.');</script>");
-            res.redirect('http://222.117.225.28:8091/#/');
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
         }
     });
 }
