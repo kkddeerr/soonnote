@@ -29,6 +29,16 @@ $( document ).ready(function() {
 			templateUrl: 'view/ccm.html'
 		};
 
+		routes['board'] = {
+			url: '#/board',
+			templateUrl: 'view/board.html'
+		};
+
+		routes['form'] = {
+			url: '#/form',
+			templateUrl: 'view/form.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute);
