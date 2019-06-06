@@ -12,7 +12,25 @@ const querys = {
     getAllLocations : "select * from sn_location;",
     getLocSchools : "select SC_NUM, SC_NAME from sn_schools where LOC_NUM = ?;",
     dupleCheck : "select count(*) as count from sn_users where USER_ID = ?;",
+<<<<<<< HEAD
+
+    /*******************************
+     * CCM 관련 쿼리
+    *******************************/    
+    getCCMList : `SELECT CM_ID
+                       , CM_TITLE
+                       , CM_SONG
+                       , IFNULL(CM_LOOKUP_COUNT,0) AS CM_LOOKUP_COUNT
+                       , CM_USER
+                       , DATE_FORMAT(PC_DT, '%Y-%m-%d') AS PC_DT
+
+                  FROM sn_ccm
+                  WHERE 1=1
+                    AND DEL_YN != 'Y';` 
+
+=======
     joinUser : "insert into sn_users (USER_ID,USER_PW,USER_NAME,USER_HAK,SC_NUM,POS_NUM) values (?,password(?),?,?,?,?);"
+>>>>>>> e98c926d1a2877e3195f4c30a4612b22b311a958
 };
 
 module.exports = querys;
