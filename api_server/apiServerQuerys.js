@@ -11,7 +11,8 @@ const querys = {
     *******************************/
     getAllLocations : "select * from sn_location;",
     getLocSchools : "select SC_NUM, SC_NAME from sn_schools where LOC_NUM = ?;",
-    dupleCheck : "select count(*) as count from sn_users where USER_ID = ?;"
+    dupleCheck : "select count(*) as count from sn_users where USER_ID = ?;",
+    joinUser : "insert into sn_users (USER_ID,USER_PW,USER_NAME,USER_HAK,SC_NUM,POS_NUM) values (?,?,?,?,?,?);"
 };
 
 module.exports = querys;

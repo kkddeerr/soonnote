@@ -101,6 +101,6 @@ $(document).ready(function() {
             return false;
         }
 
-        //$("#joinForm").submit();
+        $("#joinForm").submit();
     });
 });

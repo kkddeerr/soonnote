@@ -87,3 +87,29 @@ exports.dupleCheck = (req, res) => {
         }
     });
 }
+
+/**
+ * 회원가입
+ * @param POST
+ */
+exports.joinUser = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("joinUser API Request");
+
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.body.user_id);
+    value.push("password("+req.body.user_pw+")");
+    value.push(req.body.user_name);
+    value.push(req.body.user_hak);
+    value.push(req.body.sn_code);
+    value.push(3);
+
+    pool.query(querys.joinUser, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.redirect('http://222.117.225.28:8091/#/');
+        }
+    });
+}
