@@ -1,3 +1,7 @@
+/**
+ * join.html Controller
+*/
+
 $(document).ready(function() {
     $.ajax({
         url: "http://222.117.225.28:8071/api/user/getAllLocation",
@@ -67,30 +71,35 @@ $(document).ready(function() {
     });
 
     $("#joinSubmitBtn").click(() => {
-        if($("#user_id").val() === "") {
+        let user_id = $("#user_id").val(); // 아이디
+        if(user_id === "") {
             alert("아이디를 입력해주세요.");
             $("#user_id").focus();
             return false;
         }
 
-        if($("#user_pw").val() === "") {
+        let user_pw = $("#user_pw").val(); // 비밀번호
+        if(user_pw === "") {
             alert("비밀번호를 입력해주세요.");
             $("#user_pw").focus();
             return false;
         }
 
-        if($("#user_name").val() === "") {
+        let user_name = $("#user_name").val(); // 이름
+        if(user_name === "") {
             alert("이름을 입력해주세요.");
             $("#user_name").focus();
             return false;
         }
 
-        if($("#loc_num").val() === "" || $("#sn_code").val() === "") {
+        let sn_code = $("#sn_code").val(); // 학교 코드
+        if($("#loc_num").val() === "" || sn_code === "") {
             alert("학교를 선택해주세요.");
             return false;
         }
 
-        if($("#user_hak").val() === "") {
+        let user_hak = $("#user_hak").val(); // 학번
+        if(user_hak === "") {
             alert("학번을 입력해주세요. (ex 19)");
             $("#user_hak").focus();
             return false;
@@ -101,6 +110,22 @@ $(document).ready(function() {
             return false;
         }
 
-        //$("#joinForm").submit();
+        $.ajax({
+            url: "http://222.117.225.28:8071/api/user/joinUser",
+            type: "post",
+            dataType: "json",
+            data: {"user_id":user_id, "user_pw":user_pw, "user_name":user_name, "user_hak":user_hak, "sn_code":sn_code},
+            success: (responseData) => {
+                let error = responseData.Error;
+                console.log(responseData.data);
+                if(error === false) { // 성공했다면
+                    alert("회원가입에 성공했습니다.");
+                    $(location).attr('href', '#/');
+                }
+            },
+            error: (xhr, status, error) => {
+                console.log(error);
+            }
+        });
     });
 });

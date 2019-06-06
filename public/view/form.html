@@ -1,0 +1,21 @@
+<script src="../controller/formController.js"></script>
+
+<form name="form1" action="#/save" method="GET">
+        <table border="1" style="width:600px" >
+            <tbody>
+                <tr>
+                    <td>작성자</td>
+                    <td><input type="text" name="brdwriter" id="brdwriter" size="20" maxlength="20"></td>
+                </tr>
+                <tr>
+                    <td>제목</td>
+                    <td><input type="text" name="brdtitle" id="brdtitle" size="70" maxlength="250" ></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td><textarea name="brdmemo" id="brdmemo" rows="5" cols="60" ></textarea></td>
+                </tr>
+            </tbody>
+        </table>
+        <button type="button" id="saveButton">저장</button>
+    </form>
