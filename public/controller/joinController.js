@@ -82,6 +82,7 @@ $(document).ready(function() {
         }
 
         let user_name = $("#user_name").val(); // 이름
+        console.log(user_name);
         if(user_name === "") {
             alert("이름을 입력해주세요.");
             $("#user_name").focus();
