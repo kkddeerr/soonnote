@@ -29,6 +29,11 @@ $( document ).ready(function() {
 			templateUrl: 'view/ccm.html'
 		};
 
+		routes['summerConference2019'] = {
+			url: '#/summerConference2019',
+			templateUrl: 'view/summerConference2019.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute);

@@ -1,3 +1,7 @@
+/**
+ * join.html Controller
+*/
+
 $(document).ready(function() {
     $.ajax({
         url: "http://222.117.225.28:8071/api/user/getAllLocation",
@@ -82,7 +86,6 @@ $(document).ready(function() {
         }
 
         let user_name = $("#user_name").val(); // 이름
-        console.log(user_name);
         if(user_name === "") {
             alert("이름을 입력해주세요.");
             $("#user_name").focus();
@@ -114,6 +117,7 @@ $(document).ready(function() {
             data: {"user_id":user_id, "user_pw":user_pw, "user_name":user_name, "user_hak":user_hak, "sn_code":sn_code},
             success: (responseData) => {
                 let error = responseData.Error;
+                console.log(responseData.data);
                 if(error === false) { // 성공했다면
                     alert("회원가입에 성공했습니다.");
                     $(location).attr('href', '#/');
