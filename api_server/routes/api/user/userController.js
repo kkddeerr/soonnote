@@ -99,7 +99,7 @@ exports.joinUser = (req, res) => {
     // 쿼리 prepared statement
     let value = [];
     value.push(req.body.user_id);
-    value.push("password("+req.body.user_pw+")");
+    value.push(req.body.user_pw);
     value.push(req.body.user_name);
     value.push(req.body.user_hak);
     value.push(req.body.sn_code);
@@ -109,6 +109,7 @@ exports.joinUser = (req, res) => {
         if(err) {
             commonModule.errResultJSON(err, res);
         } else {
+            res.write("<script type='text/javascript'>alert('회원가입이 완료되었습니다.');</script>");
             res.redirect('http://222.117.225.28:8091/#/');
         }
     });
