@@ -2,7 +2,7 @@
 <p><h1>등록</h1></p>
 
 
-    <form method="post" action="/ccmReg" onsubmit="onWriteSubmit()"></form>
+    <form method="post" action="/ccmReg" onsubmit="onWriteSubmit()"></form> 
       <table >
         <tr>
           <th>제목</th>
@@ -20,11 +20,11 @@
           <td><textarea cols="50" role="12" name="content" id="content" ></textarea></td>
         </tr>
         <tr>
-          <td colspan="2"><input type="submit" value="등록"></td>
+          <!-- <td colspan="2"><input type="submit" value="등록" display="none"></td> -->
         </tr>
       </table>
     </form>
-    <button type="button" id="ccmReg">등록하기 버튼</button>
+    <button type="button" id="ccmReg">등록</button>
   <script>
     function onWriteSubmit()
     {

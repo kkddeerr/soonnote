@@ -43,7 +43,8 @@ const querys = {
                             , DEL_YN     
                         )
                       VALUE(?,?,?,?,?,?,?,?,0,?,NOW(),NOW(),'N');`
-
+    ,getNewCcmKey : `SELECT MAX(CM_ID) AS CM_ID
+                       FROM sn_ccm;`
 };
 
 module.exports = querys;

@@ -10,15 +10,12 @@ const commonModule = require('./../../../modules/commonModule');
  */
 
 /**
- * 모든 지역 정보 반환
+ * 모든 CCMLIST 조회
  * @returns json
  */
 //exports.getAllLocation = (req, res) => {
 exports.getCCMList = (req, res) => {
   
-// LOC_NUM, LOC_NAME
-    // 지역번호, 지역이름
-
     let pool = require('./../../../DBConnect/mariaDBPool').pool;
     console.log("getCCMList API Request"); 
 
@@ -42,7 +39,7 @@ exports.getCCMList = (req, res) => {
 exports.ccmReg = (req, res) => {
     let pool = require('./../../../DBConnect/mariaDBPool').pool;
     console.log("ccmReg API Request"); 
-
+    console.log(req.body); 
     // 쿼리 prepared statement
     let value = [];
     value.push(req.body.CM_ID);
@@ -67,3 +64,28 @@ exports.ccmReg = (req, res) => {
         }
     });
 }
+
+//getNewCcmKey
+
+/**
+ * CCMLIST 입력전 기존 마지막 키값 조회.
+ * @returns json
+ */
+//exports.getAllLocation = (req, res) => {
+    exports.getNewCcmKey = (req, res) => {
+  
+        let pool = require('./../../../DBConnect/mariaDBPool').pool;
+        console.log("getNewCcmKey API Request"); 
+    
+        pool.query(querys.getNewCcmKey, (err, rows) => {  
+            if(err) {
+                commonModule.errResultJSON(err, res);
+            } else {
+                res.json({
+                    "Error" : false,
+                    "Message" : "Success",
+                    "data" : rows
+                });
+            }
+        });
+    }
