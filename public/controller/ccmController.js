@@ -67,4 +67,9 @@ $(document).ready(function() {
             alert(error);
         }  
     });
+
+    $("#regCcm").click(() => { 
+        $(location).attr('href', '#/ccmAdd');
+    } );
 });  
+

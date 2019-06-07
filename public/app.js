@@ -44,6 +44,11 @@ $( document ).ready(function() {
 			templateUrl: 'view/form.html'
 		};
 
+		routes['ccmAdd'] = {
+			url: '#/ccmAdd',
+			templateUrl: 'view/ccmAdd.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute);

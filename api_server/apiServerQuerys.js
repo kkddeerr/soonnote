@@ -27,6 +27,22 @@ const querys = {
                   FROM sn_ccm
                   WHERE 1=1
                     AND DEL_YN != 'Y';` 
+    ,insertCCMList : `INSERT INTO 
+                      sn_ccm( CM_ID
+                            , CM_TITLE
+                            , CM_LYRICS
+                            , CM_CONTENT
+                            , CM_SINGER
+                            , CM_IMAGE
+                            , CM_SONG
+                            , CM_THEME
+                            , CM_LOOKUP_COUNT
+                            , CM_USER
+                            , PC_DT
+                            , FST_PC_DT
+                            , DEL_YN     
+                        )
+                      VALUE(?,?,?,?,?,?,?,?,0,?,NOW(),NOW(),'N');`
 
 };
 

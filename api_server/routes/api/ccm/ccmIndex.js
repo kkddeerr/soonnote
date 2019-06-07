@@ -4,4 +4,6 @@ const ccmController = require('./ccmController');
 //router.get('/getAllLocation', userController.getAllLocation);
 console.log('ccmIndex');
 router.get('/getCCMList', ccmController.getCCMList);
-module.exports = router;
+router.get('/ccmReg', ccmController.ccmReg);
+
+module.exports = router; 

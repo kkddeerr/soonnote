@@ -30,6 +30,7 @@ function mariaDBConnect(next) {
             next(connection,pool);
         }
     });
+    
 }
 
 exports.mariaDBConnect = mariaDBConnect;

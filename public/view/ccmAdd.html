@@ -1,0 +1,49 @@
+<script src="../controller/ccmAddController.js"></script>
+<p><h1>등록</h1></p>
+
+
+    <form method="post" action="/ccmReg" onsubmit="onWriteSubmit()"></form>
+      <table >
+        <tr>
+          <th>제목</th>
+          <td><input type="text" name="title" id="title" required /></td>
+        </tr>
+        <tr>
+            <th>가수</th>
+            <td><input type="text" name="singer" id="singer" required /></td>
+          </tr>
+        <th>가사</th>
+            <td><textarea cols="50" role="12" name="lyrics" id="lyrics" ></textarea></td>
+          </tr>
+        <tr>
+          <th>내용</th>
+          <td><textarea cols="50" role="12" name="content" id="content" ></textarea></td>
+        </tr>
+        <tr>
+          <td colspan="2"><input type="submit" value="등록"></td>
+        </tr>
+      </table>
+    </form>
+    <button type="button" id="ccmReg">등록하기 버튼</button>
+  <script>
+    function onWriteSubmit()
+    {
+      if ( $("#writer").val().trim() == "" )
+      {
+        var message = "아이디를 입력해 주세요";
+        $("#writer").val("");
+        $("#writer").focus();
+        alert(message);
+        return false;
+      }
+
+      if ( $("#title").val().trim() == "" )
+      {
+        var message = "제목을 입력해 주세요";
+        $("#title").val("");
+        $("#title").focus();
+        alert(message);
+        return false;
+      }
+    }
+  </script>
