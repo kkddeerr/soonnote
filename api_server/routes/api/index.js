@@ -10,5 +10,7 @@ router.use('/calendar', calendar);
 router.use('/user', user);
 //CCM
 router.use('/ccm',ccm);
+// 게시판
+router.use('/board',board);
 
 module.exports = router;
