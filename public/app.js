@@ -49,12 +49,18 @@ $( document ).ready(function() {
 			templateUrl: 'view/ccmAdd.html'
 		};
 
+		routes['ccmDetail'] = {
+			url: '#/ccmDetail/cmid',
+			templateUrl: 'view/ccmDetail.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute);
 
 		$.when($.ready)
 			.then(function() {
+				console.log("@@@@@@@@@@@@@@@@@@@@@@@@@###################");
 				$.router.run('.my-view', 'main');
             });
             
