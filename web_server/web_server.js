@@ -17,8 +17,12 @@ app.use(express.static(changeDir + 'public'));
 //opener("http://localhost:8091");
 
 app.get('/', function (req, res) {
+    
+    console.log("!!!!web_server@@@@@@@@@@ :"+req.query); 
+    
     try{
-        res.render('index.html');
+        console.log("web_server@@@@@@@@@@ :"+req.query); 
+        res.render('index.html'); 
         //express.static으로 경로없이 
         //index.html로 접근 가능    
     

@@ -48,10 +48,26 @@ $( document ).ready(function() {
 			url: '#/ccmAdd',
 			templateUrl: 'view/ccmAdd.html'
 		};
+		
+		/* @ view-model 사용예제
+			routes['categoryDetail'] = {
+			url: '#/categories/:categoryId',
+			templateUrl: 'templates/category.html',
+			viewModel: vm["categoryVM"],
+		}; */
+
+		routes['ccmDetail'] = {
+			url: '#/ccmDetail/:cmId',
+			templateUrl: 'view/ccmDetail.html',
+			viewModel : vm["getCcmDetail"]
+		};
 
 		$.router
 			.setData(routes)
-			.setDefault(defaultRoute);
+			.setDefault(defaultRoute)
+			.onRouteChanged(function(e, route, param) {
+			  route.viewModel(route, param);
+			});
 
 		$.when($.ready)
 			.then(function() {

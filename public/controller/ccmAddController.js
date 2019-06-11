@@ -1,6 +1,5 @@
 $(document).ready(function() {
    
-   
     $("#ccmReg").click(() => {
         
         //제목
@@ -44,30 +43,33 @@ $(document).ready(function() {
                     console.log('게시물 id 채번 성공>>'+data[0].CM_ID);
 
                     sCmId = data[0].CM_ID;
+
+
                     // 채번된 값으로 new 생성. ex) t0003 -> t0004
                     sCmId = 't'+lpad((Number(sCmId.substring(1,5))+1)+'',4,'0');
-                    console.log("newKey : "+sCmId); 
+                    
+
                     $.ajax({
-            
+                    
                         url: "http://localhost:8071/api/ccm/ccmReg", //등록 
                         type: "post",
                         dataType: "json",
                         //data:{},
                         data:{"CM_ID":sCmId
-                             ,"CM_TITLE":sTitle
-                             ,"CM_LYRICS":sLyrics
-                             ,"CM_CONTENT":sContent 
-                             ,"CM_SINGER":sSinger
-                             ,"CM_IMAGE":""
-                             ,"CM_SONG":""
-                             ,"CM_THEME":""
-                             ,"CM_LOOKUP_COUNT":""
-                             ,"CM_USER":"김민수"
-                             ,"PC_DT":""
-                             ,"FST_PC_DT":""
-                             ,"DEL_YN":""
+                            ,"CM_TITLE":sTitle
+                            ,"CM_LYRICS":sLyrics
+                            ,"CM_CONTENT":sContent 
+                            ,"CM_SINGER":sSinger
+                            ,"CM_IMAGE":""
+                            ,"CM_SONG":""
+                            ,"CM_THEME":""
+                            ,"CM_LOOKUP_COUNT":""
+                            ,"CM_USER":"김민수"
+                            ,"PC_DT":""
+                            ,"FST_PC_DT":""
+                            ,"DEL_YN":""
                             },
-                      
+                    
                         success: (responseData) => {
                             let error = responseData.Error;
                             console.log(responseData.data);
@@ -89,9 +91,7 @@ $(document).ready(function() {
             }
         });
 
-         
-
-        
+ 
     });
 });
 

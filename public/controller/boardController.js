@@ -6,8 +6,8 @@ $(document).ready(function(){
         success: (responseData) => {
             let data = responseData.data;
             for (let i = 0; i < data.length; i++) {
-                let option = $("<tr> <td>" + data[i].BOARD_NUM + "</td> <td>" + data[i].BOARD_TITLE + "</td>"
-                + "<td>" + data[i].BOARD_WRITER + "</td> <td>" + data[i].BOARD_DATE + "</td> <tr>");
+                let option = $("<tr> <td>" + data[i].board_no + "</td> <td>" + data[i].board_title + "</td>"
+                + "<td>" + data[i].board_writer + "</td> <td>" + data[i].board_date + "</td> <tr>");
                 $("#board_list").append(option);
             }
         },

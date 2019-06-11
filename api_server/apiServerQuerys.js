@@ -45,6 +45,18 @@ const querys = {
                       VALUE(?,?,?,?,?,?,?,?,0,?,NOW(),NOW(),'N');`
     ,getNewCcmKey : `SELECT MAX(CM_ID) AS CM_ID
                        FROM sn_ccm;`
-};
+
+    /*******************************
+     * 게시판 관련 쿼리
+    *******************************/
+   ,getBOARDList : `select * from sn_board;` 
+   ,insertBOARDList : `INSERT INTO 
+                            sn_board ( board_title
+                            , board_writer
+                            , board_memo 
+                            , board_date    
+                        )
+                      VALUE(?,?,?,NOW());`
+}; 
 
 module.exports = querys;
