@@ -50,9 +50,9 @@ $(document).ready(function() {
             let data = responseData.data;
             for (let i = 0; i < data.length; i++) {
                 //let option = $("<option value='"+data[i].CM_ID+"'>"+data[i].CM_TITLE+"</option>");
-                let option = $(`<tr>
+                let option = $(`<tr id="`+"cm"+i+`">
                 <td>`+ Number(i+1) +`</td> 
-                <td>`+data[i].CM_TITLE+`</td>
+                <td id="`+"cm"+i+`">`+data[i].CM_TITLE+`</td>
                 <td>`+data[i].CM_USER+`</td>
                 <td>`+data[i].PC_DT+`</td>
                 <td>`+data[i].CM_LOOKUP_COUNT+`</td>
@@ -70,6 +70,16 @@ $(document).ready(function() {
 
     $("#regCcm").click(() => { 
         $(location).attr('href', '#/ccmAdd');
+    } );
+
+    $('td').click(() => { 
+        
+        $('tr:first').css('background', '#000000').css('color', '#FFFFFF');
+
+        var id_check = $(this).attr("id");
+        console.log("id_check :"+id_check);
+                
+        // 반복문을 
     } );
 });  
 
