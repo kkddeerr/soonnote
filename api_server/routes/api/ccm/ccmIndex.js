@@ -6,4 +6,5 @@ console.log('ccmIndex');
 router.get('/getCCMList', ccmController.getCCMList);
 router.post('/ccmReg', ccmController.ccmReg);
 router.get('/getNewCcmKey',ccmController.getNewCcmKey);
+router.get('/getCCMDetail',ccmController.getCCMDetail);
 module.exports = router;   

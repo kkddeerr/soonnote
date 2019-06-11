@@ -45,7 +45,24 @@ const querys = {
                       VALUE(?,?,?,?,?,?,?,?,0,?,NOW(),NOW(),'N');`
     ,getNewCcmKey : `SELECT MAX(CM_ID) AS CM_ID
                        FROM sn_ccm;`
+    ,getCCMDetail : `SELECT CM_ID
+                          , CM_TITLE
+                          , CM_LYRICS
+                          , CM_CONTENT
+                          , CM_SINGER
+                          , CM_IMAGE
+                          , CM_SONG
+                          , CM_THEME
+                          , IFNULL(CM_LOOKUP_COUNT,0) AS CM_LOOKUP_COUNT
+                          , CM_USER
+                          , DATE_FORMAT(PC_DT, '%Y-%m-%d') AS PC_DT
+                          , DATE_FORMAT(FST_PC_DT, '%Y-%m-%d') AS FST_PC_DT
 
+                      FROM sn_ccm
+                      WHERE 1=1
+                        AND CM_ID = ?
+                        AND DEL_YN != 'Y';   
+                    `
     /*******************************
      * 게시판 관련 쿼리
     *******************************/

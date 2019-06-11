@@ -71,21 +71,45 @@ exports.ccmReg = (req, res) => {
  * CCMLIST 입력전 기존 마지막 키값 조회.
  * @returns json
  */
-//exports.getAllLocation = (req, res) => {
-    exports.getNewCcmKey = (req, res) => {
+exports.getNewCcmKey = (req, res) => {
+
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("getNewCcmKey API Request"); 
+
+    pool.query(querys.getNewCcmKey, (err, rows) => {  
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
+
+//getCCMDetail
+/**
+ * CCM 상세조회.
+ * @returns json
+ */
+exports.getCCMDetail = (req, res) => {
   
-        let pool = require('./../../../DBConnect/mariaDBPool').pool;
-        console.log("getNewCcmKey API Request"); 
-    
-        pool.query(querys.getNewCcmKey, (err, rows) => {  
-            if(err) {
-                commonModule.errResultJSON(err, res);
-            } else {
-                res.json({
-                    "Error" : false,
-                    "Message" : "Success",
-                    "data" : rows
-                });
-            }
-        });
-    }
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("getCCMDetail API Request"); 
+    //쿼리 조건 절 셋팅
+    let value = [];
+    value.push(req.query.cmId); 
+    pool.query(querys.getCCMDetail, value, (err, rows) => {  
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
