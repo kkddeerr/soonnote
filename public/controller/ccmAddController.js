@@ -1,5 +1,62 @@
 $(document).ready(function() {
+    
    
+
+
+    $("#youtube").click(function(){
+        
+        let sSinger = $("#singer").val();
+        let sTitle = $("#title").val()
+        
+        if(sTitle === '' ){
+            alert('제목을 입력하세요.');
+            $("#title").focus();
+            return false;
+        }
+        if(sSinger === '' ){
+            alert('가수를 입력하세요');
+            $("#singer").focus();
+            return false;
+        }
+        //검색할 단어.
+        let sSrchWord = sSinger+' '+sTitle;
+
+        $.ajax({
+             //url: "http://222.117.225.28:8071/api/ccm/getYoutubeLink",
+             url: "http://localhost:8071/api/ccm/getYoutubeLink",
+             type: "get", 
+             dataType: "json",
+             data: {"word":sSrchWord},
+             success: (responseData) => {
+                 
+                 console.log('getYoutubeLink 성공');
+                 let data = responseData.data;
+                 console.log(data);
+                 for (var i in data) { 
+                    var it = data[i];
+                    var title = it["snippet"]["title"];
+                    var video_id = it["id"]["videoId"];
+                    var url = "https://www.youtube.com/watch?v=" + video_id;
+                    console.log("제목 : " + title);
+                    console.log("URL : " + url);
+                    console.log("-----------");
+                    //<iframe src="https://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315"></iframe>
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/roh3jsvkTZ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                    let option = $(`<iframe width="560" height="315" src="`+url+`" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+                    $("#video-container").append(option);
+                 }
+               
+             },
+             error: (xhr, status, error) => {
+                 console.log(error);
+                 console.log('getYoutubeLink error');
+                 alert(error); 
+             }  
+         });
+
+    });
+
+
     $("#ccmReg").click(() => {
         
         //제목
@@ -93,6 +150,8 @@ $(document).ready(function() {
 
  
     });
+
+    
 });
 
 function lpad(s, padLength, padString){

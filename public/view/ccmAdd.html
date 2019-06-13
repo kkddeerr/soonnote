@@ -6,11 +6,17 @@
       <table >
         <tr>
           <th>제목</th>
-          <td><input type="text" name="title" id="title" required /></td>
+          <td><input type="text" name="title" id="title"/></td>
         </tr>
         <tr>
             <th>가수</th>
-            <td><input type="text" name="singer" id="singer" required /></td>
+            <td><input type="text" name="singer" id="singer" /><button id = "youtube">유투브 link</button></td>
+            
+            <div id = "video-container" class="video-container">
+               <!--  <iframe src="https://www.youtube.com/watch?v=roh3jsvkTZ0" frameborder="0" width="560" height="315"></iframe> -->
+                <iframe width="560" height="315" src="https://www.youtube.com/watch?v=cmvL6ppJHO8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+
           </tr>
         <th>가사</th>
             <td><textarea cols="50" role="12" name="lyrics" id="lyrics" ></textarea></td>
@@ -18,13 +24,14 @@
         <tr>
           <th>내용</th>
           <td><textarea cols="50" role="12" name="content" id="content" ></textarea></td>
-        </tr>
+        </tr> 
         <tr>
           <!-- <td colspan="2"><input type="submit" value="등록" display="none"></td> -->
         </tr>
       </table>
     </form>
     <button type="button" id="ccmReg">등록</button>
+    
   <script>
     function onWriteSubmit()
     {

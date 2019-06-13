@@ -63,6 +63,7 @@ const querys = {
                         AND CM_ID = ?
                         AND DEL_YN != 'Y';   
                     `
+    ,getDual : `SELECT 1 FROM DUAL;`
     /*******************************
      * 게시판 관련 쿼리
     *******************************/
