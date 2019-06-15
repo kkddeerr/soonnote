@@ -6,4 +6,6 @@ console.log('ccmIndex');
 router.get('/getCCMList', ccmController.getCCMList);
 router.post('/ccmReg', ccmController.ccmReg);
 router.get('/getNewCcmKey',ccmController.getNewCcmKey);
-module.exports = router; 
+router.get('/getCCMDetail',ccmController.getCCMDetail);
+router.get('/getYoutubeLink',ccmController.getYoutubeLink);
+module.exports = router;   
