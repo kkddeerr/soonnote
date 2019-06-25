@@ -102,7 +102,7 @@ exports.joinUser = (req, res) => {
     value.push(req.body.user_pw);
     value.push(req.body.user_name);
     value.push(req.body.user_hak);
-    value.push(req.body.sn_code);
+    value.push(req.body.sn_num);
     value.push(3);
 
     pool.query(querys.joinUser, value, (err, rows) => {

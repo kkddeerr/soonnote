@@ -4,7 +4,8 @@
 
 $(document).ready(function() {
     $.ajax({
-        url: "http://222.117.225.28:8071/api/user/getAllLocation",
+        //url: "http://222.117.225.28:8071/api/user/getAllLocation",
+        url: "http://localhost:8071/api/user/getAllLocation",
         type: "get",
         dataType: "json",
         success: (responseData) => {
@@ -23,7 +24,8 @@ $(document).ready(function() {
     $("#loc_num").change(() => {
         let selectNum = $("#loc_num option:selected").val();
         $.ajax({
-            url: "http://222.117.225.28:8071/api/user/getLocSchools",
+            //url: "http://222.117.225.28:8071/api/user/getLocSchools",
+            url: "http://localhost:8071/api/user/getLocSchools",
             type: "get",
             dataType: "json",
             data: {"loc_num":selectNum},
@@ -31,7 +33,7 @@ $(document).ready(function() {
                 let data = responseData.data;
                 for (let i = 0; i < data.length; i++) {
                     let option = $("<option value='"+data[i].SC_NUM+"'>"+data[i].SC_NAME+"</option>");
-                    $("#sn_code").append(option);
+                    $("#sn_num").append(option);
                 }
             },
             error: (xhr, status, error) => {
@@ -49,7 +51,8 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: "http://222.117.225.28:8071/api/user/dupleCheck",
+            //url: "http://222.117.225.28:8071/api/user/dupleCheck",
+            url: "http://localhost:8071/api/user/dupleCheck",
             type: "get",
             dataType: "json",
             data: {"checkID":checkID},
@@ -92,8 +95,8 @@ $(document).ready(function() {
             return false;
         }
 
-        let sn_code = $("#sn_code").val(); // 학교 코드
-        if($("#loc_num").val() === "" || sn_code === "") {
+        let sn_num = $("#sn_num").val(); // 학교 코드
+        if($("#loc_num").val() === "" || sn_num === "") {
             alert("학교를 선택해주세요.");
             return false;
         }
@@ -111,10 +114,11 @@ $(document).ready(function() {
         }
 
         $.ajax({
-            url: "http://222.117.225.28:8071/api/user/joinUser",
+            //url: "http://222.117.225.28:8071/api/user/joinUser",
+            url: "http://localhost:8071/api/user/joinUser",
             type: "post",
             dataType: "json",
-            data: {"user_id":user_id, "user_pw":user_pw, "user_name":user_name, "user_hak":user_hak, "sn_code":sn_code},
+            data: {"user_id":user_id, "user_pw":user_pw, "user_name":user_name, "user_hak":user_hak, "sn_num":sn_num},
             success: (responseData) => {
                 let error = responseData.Error;
                 console.log(responseData.data);
