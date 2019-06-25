@@ -8,4 +8,6 @@ router.post('/ccmReg', ccmController.ccmReg);
 router.get('/getNewCcmKey',ccmController.getNewCcmKey);
 router.get('/getCCMDetail',ccmController.getCCMDetail);
 router.get('/getYoutubeLink',ccmController.getYoutubeLink);
+router.post('/ccmUdate',ccmController.ccmUdate);
+router.post('/ccmDelete',ccmController.ccmDelete);
 module.exports = router;   
