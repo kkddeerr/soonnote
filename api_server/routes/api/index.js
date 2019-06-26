@@ -2,6 +2,7 @@ const router = require('express').Router();
 const calendar = require('./calendar/calendarIndex');
 const user = require('./user/userIndex');
 const ccm = require('./ccm/ccmIndex');
+const conference = require('./conference/conferenceIndex');
 
 console.log("API route init");
 // 캘린더 / 
@@ -12,5 +13,7 @@ router.use('/user', user);
 router.use('/ccm',ccm);
 // 게시판
 //router.use('/board',board);
+// 수련회
+router.use('/conference',conference);
 
 module.exports = router;  

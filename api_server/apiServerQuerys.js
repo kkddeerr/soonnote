@@ -92,6 +92,11 @@ const querys = {
                             , board_date    
                         )
                       VALUE(?,?,?,NOW());`
+
+    /*******************************
+     * 수련회 관련 쿼리
+    *******************************/
+   ,confRegistry : "insert into sn_conference_applicant (CONF_NO, APP_ID, APP_NAME, APP_PHONE, SC_NUM) values (?, ?, ?, ?, ?);"
 }; 
 
 module.exports = querys;
