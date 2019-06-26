@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+    
+    //수정작업시 변경여부 확인.
+    let bUpdateYn = false;
+    
     let cmId = $('#cmId').text();
     console.log("받아온 키값 :" +cmId);
     $.ajax({
@@ -29,7 +33,9 @@ $(document).ready(function() {
          }   
      });
     
-
+     $(".form-control").change(() => {
+        bUpdateYn = true;
+    });
      //수정버튼 onclick
      $("#update").click(() => {
         
@@ -41,7 +47,7 @@ $(document).ready(function() {
         let sLyrics = $("#lyrics").val();
         //내용
         let sContent = $("#content").val();
-        //작성자
+        //작성자 
         let sUser = $("#user").val();
 
         let sCmId = $("#cmId").text(); // ccmDetail 페이지 상단 h1 태그값.
@@ -54,17 +60,16 @@ $(document).ready(function() {
             $("#title").focus(); 
             return false;
         }
-        if(sSinger === "") {
-            alert("가수를 입력해주세요.");
-            $("#singer").focus();
-            return false;
-        }
         if(sContent === "") {
             alert("내용을 입력해주세요.");
             $("#content").focus();
             return false;
         } 
         
+        if(!bUpdateYn){
+            alert('변경사항이 존재하지 않습니다.');
+            return;
+        }
         //상세보기 페이지로 이동.
         Common.Dialog.confirm({
             content: '해당 노래['+sTitle+']를 수정하시겠습니까?'
