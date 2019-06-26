@@ -1,7 +1,7 @@
 $(document).ready(function() {
     
    
-
+/*
 
     $("#youtube").click(function(){
         
@@ -55,7 +55,7 @@ $(document).ready(function() {
          });
 
     });
-
+*/
 
     $("#ccmReg").click(() => {
         

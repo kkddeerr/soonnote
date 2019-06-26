@@ -65,6 +65,64 @@ exports.ccmReg = (req, res) => {
         }
     });
 }
+/** 
+ * ccm게시판 수정
+ * @param POST
+ */
+exports.ccmUdate = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("ccmUdate API Request"); 
+    console.log(req.body);
+    // 쿼리 prepared statement
+    let value = [];
+   
+    value.push(req.body.CM_TITLE);
+    value.push(req.body.CM_LYRICS);
+    value.push(req.body.CM_CONTENT);
+    value.push(req.body.CM_SINGER);
+    value.push(req.body.CM_SONG);
+    //value.push(req.body.CM_THEME);
+    value.push(req.body.CM_USER);
+    value.push(req.body.CM_ID);
+
+    pool.query(querys.updateCCMList, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
+//ccmDelete
+/** 
+ * ccm게시판 수정
+ * @param POST
+ */
+exports.ccmDelete = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("ccmDelete API Request"); 
+    console.log(req.body);
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.body.CM_ID);
+    pool.query(querys.deleteCCMList, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
+
+
 
 //getNewCcmKey
 

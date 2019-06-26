@@ -43,6 +43,22 @@ const querys = {
                             , DEL_YN     
                         )
                       VALUE(?,?,?,?,?,?,?,?,0,?,NOW(),NOW(),'N');`
+    ,updateCCMList: `UPDATE sn_ccm 
+                        SET CM_TITLE = ?
+                          , CM_LYRICS = ?
+                          , CM_CONTENT = ?
+                          , CM_SINGER = ?
+                          , CM_SONG = ?
+                          , CM_USER = ?
+                          , PC_DT = NOW()     
+                      WHERE CM_ID = ? 
+                        AND DEL_YN != 'Y';
+                    `
+    ,deleteCCMList: `DELETE FROM sn_ccm
+                     WHERE 1=1
+                       AND CM_ID = ? ;
+                    `
+
     ,getNewCcmKey : `SELECT MAX(CM_ID) AS CM_ID
                        FROM sn_ccm;`
     ,getCCMDetail : `SELECT CM_ID
@@ -64,6 +80,7 @@ const querys = {
                         AND DEL_YN != 'Y';   
                     `
     ,getDual : `SELECT 1 FROM DUAL;`
+    
     /*******************************
      * 게시판 관련 쿼리
     *******************************/
