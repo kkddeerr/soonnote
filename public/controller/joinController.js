@@ -33,7 +33,7 @@ $(document).ready(function() {
                 let data = responseData.data;
                 for (let i = 0; i < data.length; i++) {
                     let option = $("<option value='"+data[i].SC_NUM+"'>"+data[i].SC_NAME+"</option>");
-                    $("#sn_num").append(option);
+                    $("#sc_num").append(option);
                 }
             },
             error: (xhr, status, error) => {
@@ -95,8 +95,8 @@ $(document).ready(function() {
             return false;
         }
 
-        let sn_num = $("#sn_num").val(); // 학교 코드
-        if($("#loc_num").val() === "" || sn_num === "") {
+        let sc_num = $("#sc_num").val(); // 학교 코드
+        if($("#loc_num").val() === "" || sc_num === "") {
             alert("학교를 선택해주세요.");
             return false;
         }
@@ -118,7 +118,7 @@ $(document).ready(function() {
             url: "http://localhost:8071/api/user/joinUser",
             type: "post",
             dataType: "json",
-            data: {"user_id":user_id, "user_pw":user_pw, "user_name":user_name, "user_hak":user_hak, "sn_num":sn_num},
+            data: {"user_id":user_id, "user_pw":user_pw, "user_name":user_name, "user_hak":user_hak, "sc_num":sc_num},
             success: (responseData) => {
                 let error = responseData.Error;
                 console.log(responseData.data);

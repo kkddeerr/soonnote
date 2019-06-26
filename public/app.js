@@ -62,6 +62,11 @@ $( document ).ready(function() {
 			viewModel : vm["getCcmDetail"]
 		};
 
+		routes['conferenceRegistry'] = {
+			url: '#/conferenceRegistry'	,
+			templateUrl: 'view/conferenceRegistry.html'
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute)
