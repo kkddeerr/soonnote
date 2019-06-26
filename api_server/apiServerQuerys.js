@@ -96,6 +96,8 @@ const querys = {
     /*******************************
      * 수련회 관련 쿼리
     *******************************/
+   ,checkRegistryID : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_ID=?;"
+   ,checkRegistryPhone : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_PHONE=?;"
    ,confRegistry : "insert into sn_conference_applicant (CONF_NO, APP_ID, APP_NAME, APP_PHONE, SC_NUM) values (?, ?, ?, ?, ?);"
 }; 
 

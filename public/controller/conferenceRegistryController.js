@@ -68,16 +68,35 @@ $(document).ready(function() {
         let app_id = $("#app_id").val();
 
         $.ajax({
-            //url: "http://222.117.225.28:8071/api/conference/confRegistry",
-            url: "http://localhost:8071/api/conference/confRegistry",
+            //url: "http://222.117.225.28:8071/api/conference/checkRegistry",
+            url: "http://localhost:8071/api/conference/checkRegistry",
             type: "post",
             dataType: "json",
-            data: {"conf_no":conf_no, "app_id":app_id, "app_name":app_name, "app_phone":app_phone, "sc_num":sc_num},
+            data: {"conf_no":conf_no, "app_id":app_id, "app_phone":app_phone},
             success: (responseData) => {
-                let error = responseData.Error;
-                console.log(responseData.data);
-                if(error === false) { // 성공했다면
-                    alert("신청이 완료되었습니다.");
+                let count = responseData.data[0].count;
+                
+                if(count === 0) { // 신청하지 않았다면
+                    $.ajax({
+                        //url: "http://222.117.225.28:8071/api/conference/confRegistry",
+                        url: "http://localhost:8071/api/conference/confRegistry",
+                        type: "post",
+                        dataType: "json",
+                        data: {"conf_no":conf_no, "app_id":app_id, "app_name":app_name, "app_phone":app_phone, "sc_num":sc_num},
+                        success: (responseData) => {
+                            let error = responseData.Error;
+                            console.log(responseData.data);
+                            if(error === false) { // 성공했다면
+                                alert("신청이 완료되었습니다.");
+                                $(location).attr('href', '#/summerConference2019');
+                            }
+                        },
+                        error: (xhr, status, error) => {
+                            console.log(error);
+                        }
+                    });
+                } else {
+                    alert("이미 신청하셨습니다.");
                     $(location).attr('href', '#/summerConference2019');
                 }
             },
