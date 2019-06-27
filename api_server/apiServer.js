@@ -17,6 +17,7 @@ var configureExpress = function (next) {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use(cors());
+    app.set('jwt-secret', 'SeCrEtKeYfOrHaShInG');
     
     // DB Connection
     var mariaDBConnect = require("./DBConnect/mariaDBPool").mariaDBConnect;
