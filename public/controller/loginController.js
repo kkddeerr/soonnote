@@ -29,7 +29,23 @@ $(document).ready(function() {
             success: (responseData) => {
                 let message = responseData.Message;
                 if(message === 'Success') {
-                    console.log(responseData.data);
+                    let jwtoken = responseData.data;
+
+                    $.ajax({
+                        url: "http://localhost:8091/setsession",
+                        type: "post",
+                        dataType: "json",
+                        data: {"jwtoken":jwtoken},
+                        success: (responseData) => {
+                            if(responseData.Message === "Success") {
+                                alert("로그인에 성공했습니다.");
+                                $(location).attr("href", "/");
+                            }
+                        },
+                        error: (xhr, status, error) => {
+                            console.log(error);
+                        }
+                    });
                 }
             },
             error: (xhr, status, error) => {
