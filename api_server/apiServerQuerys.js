@@ -13,6 +13,7 @@ const querys = {
     ,getLocSchools : "select SC_NUM, SC_NAME from sn_schools where LOC_NUM = ?;"
     ,dupleCheck : "select count(*) as count from sn_users where USER_ID = ?;"
     ,joinUser : "insert into sn_users (USER_ID,USER_PW,USER_NAME,USER_HAK,SC_NUM,POS_NUM) values (?,password(?),?,?,?,?);"
+    ,login : "select USER_ID, USER_NAME, SC_NUM, POS_NUM from sn_users where USER_ID=? and USER_PW=password(?);"
 
     /*******************************
      * CCM 관련 쿼리
@@ -43,6 +44,22 @@ const querys = {
                             , DEL_YN     
                         )
                       VALUE(?,?,?,?,?,?,?,?,0,?,NOW(),NOW(),'N');`
+    ,updateCCMList: `UPDATE sn_ccm 
+                        SET CM_TITLE = ?
+                          , CM_LYRICS = ?
+                          , CM_CONTENT = ?
+                          , CM_SINGER = ?
+                          , CM_SONG = ?
+                          , CM_USER = ?
+                          , PC_DT = NOW()     
+                      WHERE CM_ID = ? 
+                        AND DEL_YN != 'Y';
+                    `
+    ,deleteCCMList: `DELETE FROM sn_ccm
+                     WHERE 1=1
+                       AND CM_ID = ? ;
+                    `
+
     ,getNewCcmKey : `SELECT MAX(CM_ID) AS CM_ID
                        FROM sn_ccm;`
     ,getCCMDetail : `SELECT CM_ID
@@ -64,6 +81,7 @@ const querys = {
                         AND DEL_YN != 'Y';   
                     `
     ,getDual : `SELECT 1 FROM DUAL;`
+    
     /*******************************
      * 게시판 관련 쿼리
     *******************************/
@@ -75,6 +93,7 @@ const querys = {
                             , BOARD_DATE    
                         )
                       VALUE(?,?,?,NOW());`
+<<<<<<< HEAD
     ,getBoardDetail : ` SELECT BOARD_NO
                         , BOARD_TITLE
                         , BOARD_WRITER
@@ -83,6 +102,15 @@ const querys = {
                         FROM sn_board
                         WHERE BOARD_NO = ?;
     `
+=======
+
+    /*******************************
+     * 수련회 관련 쿼리
+    *******************************/
+   ,checkRegistryID : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_ID=?;"
+   ,checkRegistryPhone : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_PHONE=?;"
+   ,confRegistry : "insert into sn_conference_applicant (CONF_NO, APP_ID, APP_NAME, APP_PHONE, SC_NUM) values (?, ?, ?, ?, ?);"
+>>>>>>> ef05e1b613bb7574e31c826d8089e0ded5998a2f
 }; 
 
 module.exports = querys;

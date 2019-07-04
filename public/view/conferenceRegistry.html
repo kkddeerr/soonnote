@@ -1,0 +1,18 @@
+<script src="../controller/conferenceRegistryController.js"></script>
+
+<h1>수련회 등록</h1>
+<div>
+    <input type="hidden" name="conf_no" id="conf_no" value="1">
+    <input type="hidden" name="app_id" id="app_id" value="">
+    <p>이름 : <input type="text" name="app_name" id="app_name" placeholder="이름"></p>
+    <p>휴대폰번호 : <input type="text" name="app_phone" id="app_phone" placeholder="-없이 입력"></p>
+    <p>학교 : 
+        <select name="loc_num" id="loc_num">
+            <option value="">--</option>
+        </select>
+        <select name="sc_num" id="sc_num">
+            <option value="">--</option>
+        </select>
+    </p>
+    <p><button type="button" id="registBtn">신청하기</button></p>
+</div>

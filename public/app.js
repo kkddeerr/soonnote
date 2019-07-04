@@ -48,6 +48,11 @@ $( document ).ready(function() {
 			url: '#/ccmAdd',
 			templateUrl: 'view/ccmAdd.html'
 		};
+
+		routes['login'] = {
+			url : '#/login',
+			templateUrl: 'view/login.html'
+		}
 		
 		/* @ view-model 사용예제
 			routes['categoryDetail'] = {
@@ -62,10 +67,16 @@ $( document ).ready(function() {
 			viewModel : vm["getCcmDetail"]
 		};
 
+<<<<<<< HEAD
 		routes['boardDetail'] = {
 			url: '#/boardDetail/:BOARD_NO',
 			templateUrl: 'view/boardDetail.html',
 			viewModel : vm["getboardDetail"]
+=======
+		routes['conferenceRegistry'] = {
+			url: '#/conferenceRegistry'	,
+			templateUrl: 'view/conferenceRegistry.html'
+>>>>>>> ef05e1b613bb7574e31c826d8089e0ded5998a2f
 		};
 
 		$.router

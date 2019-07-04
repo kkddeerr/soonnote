@@ -4,6 +4,7 @@
 
 $(document).ready(function() {
     $("#appliBtn").click(()=>{
-        $(location).attr("href", "");
+        let conf_num = $("#conf_num").val();
+        $(location).attr("href", "#/conferenceRegistry");
     });
 });

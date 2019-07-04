@@ -1,8 +1,6 @@
 $(document).ready(function() {
      
     $.ajax({
-       // url: "http://222.117.225.28:8071/api/user/getAllLocation",
-        //url: "http://222.117.225.28:8071/api/ccm/getCCMList",
         url: "http://localhost:8071/api/ccm/getCCMList",
         type: "get", 
         dataType: "json",
@@ -35,10 +33,11 @@ $(document).ready(function() {
         $(location).attr('href', '#/ccmAdd');
     } );
 
+    $("#regCcm").click(() => { 
+        $(location).attr('href', '#/ccmAdd');
+    } );
 
-
-
-    $(document).on("click", "#example-table-1 tr", function(){
+    $(document).off("click").on("click", "#example-table-1 tbody tr", function(){
     
      
         // 테이블의 Row 클릭시 값 가져오기
@@ -78,19 +77,22 @@ $(document).ready(function() {
         
             $("#ex1_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());		
             $("#ex1_Result2").html(str);
+
     
-            
+            console.log('확인 클릭'); 
+            $(location).attr('href', '#/ccmDetail/'+cmid);
             //상세보기 페이지로 이동.
-            Common.Dialog.confirm({
+          /*   Common.Dialog.confirm({
                 content: '해당 노래['+userid+']의 상세보기로 이동하시겠습니까?'
                 ,ok: function(){
                     console.log('확인 클릭'); 
-                     $(location).attr('href', '#/ccmDetail/'+cmid);
+                     
                     
                 } 
-            }); 
-           
+            }); */ 
     });
+
 });  
+
 
 

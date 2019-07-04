@@ -2,6 +2,7 @@ var express = require('express');
 var opener = require('opener');
 var app = express();
 var xFrameOptions = require('x-frame-options')
+var session = require('express-session');
 
 var bodyParser  = require("body-parser");
 
@@ -14,7 +15,14 @@ var changeDir = __dirname.replace(/\web_server/g,'');
 
 app.use(express.static(changeDir + 'public'));
 app.use(xFrameOptions());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 //opener("http://localhost:8091");
+app.use(session({
+    secret: 'soonnote',
+    resave: false,
+    saveUninitialized: true
+}));
 
 app.get('/', function (req, res) {
     
@@ -27,6 +35,35 @@ app.get('/', function (req, res) {
     
     }catch(err){
         console.log(err);
+    }
+});
+
+app.post('/setsession', function (req, res) {
+    sess = req.session;
+    sess.jwtoken = req.body.jwtoken;
+
+    res.json({
+        "Error" : false,
+        "Message" : "Success",
+        "data" : ""
+    });
+});
+
+app.get('/getsession', function (req, res) {
+    sess = req.session;
+
+    if(typeof(sess.jwtoken) !== "undefined") {
+        res.json({
+            "Error" : false,
+            "Message" : "Success",
+            "data" : sess.jwtoken
+        });
+    } else {
+        res.json({
+            "Error" : true,
+            "Message" : "Fail",
+            "data" : "세션이 존재하지 않습니다."
+        });
     }
 });
 
