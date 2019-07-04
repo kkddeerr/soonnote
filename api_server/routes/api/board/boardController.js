@@ -41,11 +41,34 @@ exports.boardReg = (req, res) => {
     console.log(req.body); 
     // 쿼리 prepared statement
     let value = [];
-    value.push(req.body.brdwriter);
-    value.push(req.body.brdtitle);
-    value.push(req.body.brdmemo);
+    value.push(req.body.BOARD_TITLE);
+    value.push(req.body.BOARD_WRITER);
+    value.push(req.body.BOARD_CONTENT);
 
     pool.query(querys.insertBOARDList, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
+
+    /** 
+ * 게시글 읽기
+ * @param GET
+ */
+exports.getBoardDetail = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("boardDetail API Request"); 
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.query.BOARD_NO);
+    pool.query(querys.getBoardDetail, value, (err, rows) => {
         if(err) {
             commonModule.errResultJSON(err, res);
         } else {

@@ -62,6 +62,12 @@ $( document ).ready(function() {
 			viewModel : vm["getCcmDetail"]
 		};
 
+		routes['boardDetail'] = {
+			url: '#/boardDetail/:BOARD_NO',
+			templateUrl: 'view/boardDetail.html',
+			viewModel : vm["getboardDetail"]
+		};
+
 		$.router
 			.setData(routes)
 			.setDefault(defaultRoute)

@@ -69,12 +69,20 @@ const querys = {
     *******************************/
    ,getBOARDList : `select * from sn_board;` 
    ,insertBOARDList : `INSERT INTO 
-                            sn_board ( board_title
-                            , board_writer
-                            , board_memo 
-                            , board_date    
+                            sn_board ( BOARD_TITLE
+                            , BOARD_WRITER
+                            , BOARD_CONTENT 
+                            , BOARD_DATE    
                         )
                       VALUE(?,?,?,NOW());`
+    ,getBoardDetail : ` SELECT BOARD_NO
+                        , BOARD_TITLE
+                        , BOARD_WRITER
+                        , BOARD_CONTENT
+
+                        FROM sn_board
+                        WHERE BOARD_NO = ?;
+    `
 }; 
 
 module.exports = querys;
