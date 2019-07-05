@@ -4,22 +4,9 @@ $( document ).ready(function() {
     var calendarEl = $("#calendar");
     var maxEventid;
 
-    let timeFunction = function() {
-        let ctime = new Date();
-        let cdate = ((''+ctime.getDate()).length ===1) ? '0'+ctime.getDate() : ctime.getDate();
-        let cmonth = ((''+(ctime.getMonth()+1)).length === 1) ? '0'+(ctime.getMonth()+1) : (ctime.getMonth()+1);
-        let cyear = ctime.getFullYear();
-        let chour = ctime.getHours();
-        let cmin = ctime.getMinutes();
-        let csec = ctime.getSeconds();
-        return cyear + cmonth  ;
-    };
-
         var calendar = new FullCalendar.Calendar(calendarEl[0], {
           plugins: [ 'dayGrid' ,'interaction'],
-          events: [
-           
-          ]
+          events: [ ]
         });
     
         
@@ -30,8 +17,7 @@ $( document ).ready(function() {
                 url: "http://localhost:8071/api/calendar/getCalendarData",
                 type: "get",
                 dataType: "json",
-                // data: {"CA_EVDATE":timeFunction()},
-                data :{"CA_EVDATE" :"201905" },
+                data :{"CA_EVDATE" :commonModule.time.getYearMonth() },
                 success: (responseData) => {
                     var data = responseData.data;
                     maxEventid = responseData.data[0].CA_MAXID;

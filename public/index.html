@@ -13,6 +13,7 @@
     <script src="/lib/js/bootstrap.min.js"></script>
     <script src="/lib/js/jq-router.js"></script>
     <script src="/common/view-model.js"></script>
+    <script src="/common/commonModule.js"></script>
 
 
     <!-- Load Module-->
@@ -20,19 +21,21 @@
 
     <!-- 각 페이지의 Controller는 해당 페이지에서 Import해서 사용한다. -->
     <script>
-    $(document).ready(function() {
-        $.ajax({
-            url: "http://localhost:8091/getsession",
-            type: "get",
-            dataType: "json",
-            success: (responseData) => {
-                console.log(responseData.data);
-            },
-            error: (xhr, status, error) => {
-                console.log(error);
-            }
+        $(document).ready(function() {
+            $.ajax({
+                url: "http://localhost:8091/getsession",
+                type: "get",
+                dataType: "json",
+                success: (responseData) => {
+                    if(responseData.Message === "Success") {
+                        console.log(responseData.data);
+                    }
+                },
+                error: (xhr, status, error) => {
+                    console.log(error);
+                }
+            });
         });
-    });
     </script>
     <!-- 부트스트랩  -->
     <link href="/lib/css/bootstrap.min.css" rel="stylesheet">

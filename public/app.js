@@ -76,6 +76,7 @@ $( document ).ready(function() {
 			.setData(routes)
 			.setDefault(defaultRoute)
 			.onRouteChanged(function(e, route, param) {
+			  console.log(route);
 			  route.viewModel(route, param);
 			});
 
