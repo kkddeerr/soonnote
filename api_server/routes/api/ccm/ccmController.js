@@ -2,6 +2,8 @@ var Youtube = require("youtube-node")
 const eventListener = require('./../../../events/eventIndex');
 const querys = require('./../../../apiServerQuerys');
 const commonModule = require('./../../../modules/commonModule');
+
+ 
 //var Youtube = require('./../../../events/youtube-node'); 
 /**
  * Join API
@@ -230,4 +232,24 @@ exports.getYoutubeLink = (req, res) => {
             }
         });
     });  
+}
+
+exports.getLyric = (req, res) => {
+    
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+            
+
+        //결과값 출력;
+        pool.query(querys.getDual, value, (err, rows) => {  
+            if(err) {
+                commonModule.errResultJSON(err, res);
+            } else {
+                res.json({
+                    "Error" : false,
+                    "Message" : "Success",
+                    "data" : items
+                });
+            }
+        });
+
 }

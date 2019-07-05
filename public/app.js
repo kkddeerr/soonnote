@@ -53,6 +53,10 @@ $( document ).ready(function() {
 			url : '#/login',
 			templateUrl: 'view/login.html'
 		}
+		routes['crawing'] = {
+			url : '#/crawing',
+			templateUrl: 'view/crawing.html'
+		}
 		
 		/* @ view-model 사용예제
 			routes['categoryDetail'] = {

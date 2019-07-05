@@ -1,7 +1,7 @@
 $(document).ready(function() {
     
    
-/*
+
 
     $("#youtube").click(function(){
         
@@ -36,13 +36,13 @@ $(document).ready(function() {
                     var it = data[i];
                     var title = it["snippet"]["title"];
                     var video_id = it["id"]["videoId"];
-                    var url = "https://www.youtube.com/watch?v=" + video_id;
-                    console.log("제목 : " + title);
+                    var url = "https://www.youtube.com/embed/" + video_id;
+                    console.log("제목 : " + title); 
                     console.log("URL : " + url);
                     console.log("-----------");
                     //<iframe src="https://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315"></iframe>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/roh3jsvkTZ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                    let option = $(`<iframe width="560" height="315" src="`+url+`" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+                    //<iframe width="560" height="315" src="https://www.youtube.com/embed/roh3jsvkTZ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                    let option = $(`<iframe width="300" height="200" src="`+url+`" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
                     $("#video-container").append(option);
                  }
                
@@ -55,8 +55,27 @@ $(document).ready(function() {
          });
 
     });
-*/
 
+    $("#crawing").click(function(){
+        $.ajax({
+            url: "http://localhost:8071/api/ccm/getLyric",
+            type: "get", 
+            dataType: "json",
+           // data: {"word":sSrchWord},
+            success: (responseData) => {
+                
+               // console.log('getYoutubeLink 성공');
+                let data = responseData.data;
+                console.log('crawing호출');
+                
+            }, 
+            error: (xhr, status, error) => {
+                console.log(error);
+                console.log('getLyric error');
+                alert(error); 
+            }  
+        });
+    });
     $("#ccmReg").click(() => {
         
         //제목
