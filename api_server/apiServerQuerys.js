@@ -13,6 +13,7 @@ const querys = {
     ,getLocSchools : "select SC_NUM, SC_NAME from sn_schools where LOC_NUM = ?;"
     ,dupleCheck : "select count(*) as count from sn_users where USER_ID = ?;"
     ,joinUser : "insert into sn_users (USER_ID,USER_PW,USER_NAME,USER_HAK,SC_NUM,POS_NUM) values (?,password(?),?,?,?,?);"
+    ,login : "select USER_ID, USER_NAME, SC_NUM, POS_NUM from sn_users where USER_ID=? and USER_PW=password(?);"
 
     /*******************************
      * CCM 관련 쿼리

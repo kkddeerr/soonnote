@@ -19,6 +19,23 @@
     <script src="app.js"></script>
 
     <!-- 각 페이지의 Controller는 해당 페이지에서 Import해서 사용한다. -->
+    <script>
+    $(document).ready(function() {
+        $.ajax({
+            url: "http://localhost:8091/getsession",
+            type: "get",
+            dataType: "json",
+            success: (responseData) => {
+                if(responseData.Message === "Success") {
+                    console.log(responseData.data);
+                }
+            },
+            error: (xhr, status, error) => {
+                console.log(error);
+            }
+        });
+    });
+    </script>
     <!-- 부트스트랩  -->
     <link href="/lib/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
@@ -79,7 +96,7 @@
 
 
     <div class="menu">
-        <a href="#/">Main</a> | <a href="#/calendar">Calendar</a> | <a href="#/join">Join</a> | <a href="#/ccm">CCM</a> | <a href="#/board">게시판</a>
+        <a href="#/">Main</a> | <a href="#/calendar">Calendar</a> | <a href="#/join">Join</a> | <a href="#/ccm">CCM</a> | <a href="#/board">게시판</a> | <a href="#/login">로그인</a>
     </div>
 
 

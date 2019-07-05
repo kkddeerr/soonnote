@@ -48,6 +48,11 @@ $( document ).ready(function() {
 			url: '#/ccmAdd',
 			templateUrl: 'view/ccmAdd.html'
 		};
+
+		routes['login'] = {
+			url : '#/login',
+			templateUrl: 'view/login.html'
+		}
 		
 		/* @ view-model 사용예제
 			routes['categoryDetail'] = {

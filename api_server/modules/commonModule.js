@@ -1,3 +1,5 @@
+const jwt = require('jsonwebtoken');
+
 exports.errResultJSON = function (err, res) {
     console.log(err);
     var errMsg = "";
@@ -29,4 +31,22 @@ exports.objClone = function (obj) {
         }
     }
     return copy;
+};
+
+/**
+ * jwt 토큰 유효성 검사 리턴
+ * @param jwt_value
+ * @return {}
+ */
+
+exports.tkVerify = function (req, jwt_value) {
+    let token = jwt_value;
+    let secret = req.app.get('jwt-secret');
+    
+    let decoded = jwt.verify(token, secret);
+    if(decoded) {
+        return decoded;
+    } else {
+        return false;
+    }
 };

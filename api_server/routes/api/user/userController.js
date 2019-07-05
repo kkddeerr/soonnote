@@ -1,6 +1,7 @@
 const eventListener = require('./../../../events/eventIndex');
 const querys = require('./../../../apiServerQuerys');
 const commonModule = require('./../../../modules/commonModule');
+const jwt = require('jsonwebtoken');
 
 /**
  * Join API
@@ -113,6 +114,57 @@ exports.joinUser = (req, res) => {
                 "Error" : false,
                 "Message" : "Success",
                 "data" : rows
+            });
+        }
+    });
+}
+
+/**
+ * 로그인
+ * @param POST
+ */
+exports.login = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("login API Request");
+
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.body.user_id);
+    value.push(req.body.user_pw);
+
+    pool.query(querys.login, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            if(rows.length === 0) {
+                res.json({
+                    "Error" : false,
+                    "Message" : "false",
+                    "data" : rows
+                });
+            }
+
+            // const secret = 'SeCrEtKeYfOrHaShInG';
+            const secret = req.app.get('jwt-secret');
+            let token = jwt.sign(
+                {
+                    user_id: rows[0]['USER_ID'],
+                    user_name: rows[0]['USER_NAME'],
+                    sc_num: rows[0]['SC_NUM'],
+                    pos_num: rows[0]['POS_NUM']
+                },
+                secret,
+                {
+                    expiresIn: '1d',
+                    issuer: '222.117.225.28:8071',
+                    subject: 'userInfo'
+                }
+            );
+
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : token
             });
         }
     });
