@@ -1,9 +1,8 @@
 var express = require('express'); 
 var opener = require('opener');
 var app = express();
-var xFrameOptions = require('x-frame-options')
 var session = require('express-session');
-
+var xFrameOptions = require('x-frame-options')
 var bodyParser  = require("body-parser");
 
 var config =  require('./../serverConfig'),
