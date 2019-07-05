@@ -1,8 +1,8 @@
 
 $( document ).ready(function() {
-
-    var calendarEl = $("#calendar");
-    var maxEventid;
+    
+    const calendarEl = $("#calendar");
+    let maxEventid;
 
         var calendar = new FullCalendar.Calendar(calendarEl[0], {
           plugins: [ 'dayGrid' ,'interaction'],
@@ -45,7 +45,7 @@ $( document ).ready(function() {
         var i = 1;
         console.log(info);
         console.log(view);
-        //console.log(calendar.getEvents());
+        console.log(calendar.getEvents());
 
     });    
 
