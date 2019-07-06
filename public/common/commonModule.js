@@ -16,6 +16,12 @@ var commonModule = {};
             return cmonth + cdate;
         },
 
+        getYear : () => {
+            dateInit();
+            let cyear = ctime.getFullYear();
+            return cyear;
+        },
+
         getYearMonth : () => {
             dateInit();
             let cyear = ctime.getFullYear();
