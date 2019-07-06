@@ -14,16 +14,17 @@ exports.insertCalendarData = function(req,res){
     //아이디,이벤트날짜,이벤트문구,생성날짜,수정날짜,사용유무
 
     var pool = require('./../../../DBConnect/mariaDBPool').pool;
-    console.log("insertCalendarData API Request");
+    //console.log("insertCalendarData API Request");
     //post: console.log(req.body);
     //get : console.log(req.query);
     var value = [];
 
-        value.push(req.body.CA_ID);
+        //value.push(req.body.CA_ID);
+        value.push("kderr2791");
         value.push(req.body.CA_EVDATE);
         value.push(req.body.CA_STEXT);
-        value.push(req.body.CA_ERDATE);
-        value.push(req.body.CA_AEDATE);
+        value.push(commonModule.time.getFullTime());
+        value.push(commonModule.time.getFullTime());
         value.push('Y');
         
         pool.query(querys.insertCalendarInfo, value, function(err,rows){
@@ -65,7 +66,7 @@ exports.getCalendarData = function(req,res){
 
     var value = [];
 
-        console.log(req.query);
+        //console.log(req.query);
         var param = req.query.CA_EVDATE + '%';
         
         value.push(param);

@@ -52,11 +52,11 @@ $( document ).ready(function() {
 		routes['login'] = {
 			url : '#/login',
 			templateUrl: 'view/login.html'
-		}
+		};
 		routes['crawing'] = {
 			url : '#/crawing',
 			templateUrl: 'view/crawing.html'
-		}
+		};
 		
 		/* @ view-model 사용예제
 			routes['categoryDetail'] = {
@@ -80,7 +80,6 @@ $( document ).ready(function() {
 			.setData(routes)
 			.setDefault(defaultRoute)
 			.onRouteChanged(function(e, route, param) {
-			  console.log(route);
 			  route.viewModel(route, param);
 			});
 
