@@ -54,8 +54,37 @@ $( document ).ready(function() {
 
     //달력에서 이벤트를 눌렀을 때
     calendar.on('eventClick', (info) => {
-        //console.log(info.event);
+        console.log(info.event.title);
+        console.log(info.event.id);
         //isUse 'N'
+
+        let result = confirm("Title : " + info.event.title + "\n해당 이벤트를 삭제하시겠습니까");
+
+        if(result) { //yes location.replace('index.php'); } else { //no }
+
+            $.ajax({
+                url: "http://localhost:8071/api/calendar/deleteCalendarData",
+                type: "get",
+                dataType: "json",
+                data :{"CA_NUM" : info.event.id },
+                success: (responseData) => {
+                    var data = responseData.data;
+                },
+                error: (err) => {
+                    console.log(err);
+                },
+                complete: () => {
+                    removeCalendarData(eventsId); //달력에 이벤트를 모두 지우고
+                    getCalendarData(); //다시 DB에서 가져온다.
+                }
+              });
+
+              
+
+        } else {
+
+        }
+
     });
 
     //달력 데이터를 지운다.

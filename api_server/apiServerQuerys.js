@@ -8,7 +8,8 @@ const querys = {
     *******************************/
 
     insertCalendarInfo : "insert into sn_cal (CA_ID,CA_EVDATE,CA_STEXT,CA_ERDATE,CA_AEDATE,CA_USEYN) values (?,?,?,?,?,?);",
-    getCalendarData : "select A.*,(select max(CA_NUM) from soonnote.sn_cal) as CA_MAXID from soonnote.sn_cal A where CA_EVDATE like ?"
+    getCalendarData : "select A.*,(select max(CA_NUM) from soonnote.sn_cal) as CA_MAXID from soonnote.sn_cal A where CA_USEYN ='Y' and CA_EVDATE like ?",
+    deleteCalendarData : "update sn_cal set CA_USEYN = 'N' where CA_NUM = ?"
     //select @rownum:=@rownum+1 as CA_NUM,A.*,(select max(CA_NUM) from soonnote.sn_cal) as maxid from soonnote.sn_cal A, 
     //(SELECT @rownum:=0) B
     //where CA_ID ="kderr2791" and CA_USEYN ='Y' and CA_EVDATE like '20190%';

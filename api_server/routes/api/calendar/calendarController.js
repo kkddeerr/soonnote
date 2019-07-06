@@ -75,9 +75,32 @@ exports.getCalendarData = function(req,res){
             if(err) {
                 commonModule.errResultJSON(err,res);
             } else {
-                console.log(rows);
+                //console.log(rows);
                 res.json({"Error" : false, "Message" : "Success" , "data" : rows});
             }
         });
+
+};
+
+exports.deleteCalendarData = (req,res) => {
+    var pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("deleteCalendarData API Request");
+
+    var value = [];
+
+    var param = req.query.CA_NUM;
+
+    value.push(param);
+
+    pool.query(querys.deleteCalendarData, value, function(err,rows){
+        if(err) {
+            commonModule.errResultJSON(err,res);
+        } else {
+            //console.log(rows);
+            res.json({"Error" : false, "Message" : "Success" , "data" : ""});
+        }
+    });
+
+
 
 };
