@@ -67,6 +67,7 @@ $(document).ready(function() {
             var date = td.eq(3).text();
             var count = td.eq(4).text();
             var cmid = td.eq(5).text();
+            
         
             str +=	" * 클릭된 Row의 td값 = No. : <font color='red'>" + no + "</font>" +
                     ", 제목 : <font color='red'>" + userid + "</font>" +

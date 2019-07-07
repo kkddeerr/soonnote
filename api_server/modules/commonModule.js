@@ -50,3 +50,40 @@ exports.tkVerify = function (req, jwt_value) {
         return false;
     }
 };
+
+exports.time =  {
+
+    getMonthDate : () => {
+        let ctime = new Date();
+        let cmonth = ((''+(ctime.getMonth()+1)).length === 1) ? '0'+(ctime.getMonth()+1) : (ctime.getMonth()+1);
+        let cdate = ((''+ctime.getDate()).length ===1) ? '0'+ctime.getDate() : ctime.getDate();
+        return cmonth + cdate;
+    },
+
+    getYearMonth : () => {
+        let ctime = new Date();
+        let cyear = ctime.getFullYear();
+        let cmonth = ((''+(ctime.getMonth()+1)).length === 1) ? '0'+(ctime.getMonth()+1) : (ctime.getMonth()+1);
+        return cyear + cmonth;
+    },
+    
+    getYearMonthDate : () => {
+        let ctime = new Date();
+        let cyear = ctime.getFullYear();
+        let cmonth = ((''+(ctime.getMonth()+1)).length === 1) ? '0'+(ctime.getMonth()+1) : (ctime.getMonth()+1);
+        let cdate = ((''+ctime.getDate()).length ===1) ? '0'+ctime.getDate() : ctime.getDate();
+        return cyear + cmonth + cdate;
+    },
+
+    getFullTime : () => {
+        let ctime = new Date();
+        let cyear = ctime.getFullYear();
+        let cmonth = ((''+(ctime.getMonth()+1)).length === 1) ? '0'+(ctime.getMonth()+1) : (ctime.getMonth()+1);
+        let cdate = ((''+ctime.getDate()).length ===1) ? '0'+ctime.getDate() : ctime.getDate();
+        let chour = ctime.getHours();
+        let cmin = ctime.getMinutes();
+        let csec = ctime.getSeconds();
+        return cyear + cmonth + cdate + chour + cmin + csec;
+
+    }
+};

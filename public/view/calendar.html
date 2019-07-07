@@ -9,11 +9,36 @@
 <!-- LOAD Controller-->
 <script src="../controller/calendarController.js"></script>
 
+<!-- LOAD CSS-->
+<link href="../lib/css/common.css"rel='stylesheet'  />
 
 
-<h1 id="cal">캘린더</h1>
-<div id="calendar"></div>
 <div>
-    <input type="text">
-    <input type="button">
+
+    <h1 id="cal">캘린더</h1>
+    <div id="calendar"></div>
+    <div>
+        <input type="text">
+        <input type="button">
+    </div>
+
+    <div class="calendar-popup" data-popup="addCalendar">
+        <div class="calendar-popup-inner">
+            <div class="calendar-popup-contents">
+                <a class="calendar-popup-close" data-popup-close="addCalendar" href="#/calendar">X</a>
+                <div>
+                    <h4 style="text-align: center">일정 추가하기</h4>
+                    <h5>선택된 날짜</h5>
+                    <div style="font-size: 1em" id="selectedDate" ></div>
+                    <div style="display: inline-block">
+                    <h5>일정</h5>
+                    <input id="addText" type="text">
+                    <button id="calendarAdd">등록하기</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
+
