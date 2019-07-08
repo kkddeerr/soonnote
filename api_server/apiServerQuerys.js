@@ -101,16 +101,12 @@ const querys = {
                             , BOARD_DATE    
                         )
                       VALUE(?,?,?,NOW());`
-<<<<<<< HEAD
     ,getBoardDetail : ` SELECT BOARD_NO
                         , BOARD_TITLE
                         , BOARD_WRITER
                         , BOARD_CONTENT
-
                         FROM sn_board
-                        WHERE BOARD_NO = ?;
-    `
-=======
+                        WHERE BOARD_NO = ?;`
 
     /*******************************
      * 수련회 관련 쿼리
@@ -118,7 +114,6 @@ const querys = {
    ,checkRegistryID : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_ID=?;"
    ,checkRegistryPhone : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_PHONE=?;"
    ,confRegistry : "insert into sn_conference_applicant (CONF_NO, APP_ID, APP_NAME, APP_PHONE, SC_NUM) values (?, ?, ?, ?, ?);"
->>>>>>> ef05e1b613bb7574e31c826d8089e0ded5998a2f
 }; 
 
 module.exports = querys;
