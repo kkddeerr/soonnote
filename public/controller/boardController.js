@@ -17,24 +17,21 @@ $(document).ready(function(){
         }
     });
 
-    $(document).on("click", "#table1 tr", function(){ 
+    $(document).off("click").on("click", "#table1 tbody tr", function(){ 
         // 테이블의 Row 클릭시 값 가져오기
         
             // 현재 클릭된 Row(<tr>)
             var tr = $(this);
             var td = tr.children();
-        
+
+            console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+
             // td.eq(index)를 통해 값을 가져올 수도 있다.
             var BOARD_NO = td.eq(0).text();
+
+            console.log("클릭한 Row의 모든 데이터 : "+BOARD_NO);
     
-            //상세보기 페이지로 이동.
-            Common.Dialog.confirm({
-                content: '해당 게시글로 이동하시겠습니까?'
-                ,ok: function(){
-                    console.log('확인 클릭'); 
-                     $(location).attr('href', '#/boardDetail/'+ BOARD_NO);
-                } 
-            }); 
+            $(location).attr('href', '#/boardDetail/'+ BOARD_NO);
     });
 });
 

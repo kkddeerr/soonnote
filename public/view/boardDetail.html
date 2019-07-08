@@ -1,22 +1,35 @@
 <script src="../controller/boardDetailController.js"></script>
 
-<h1 id="BOARD_NO"></h1>
-<form name="form1">
-    <table border="1" style="width:600px" >
-        <tbody name="board_detail" id="board_detail">
-            <!-- <tr>
-                <td>작성자</td>
-                <input type="text" class="form-control" id="title" placeholder="Enter Song Name" name="title">
-                <td><%=row.BRDWRITER%></td>
-            </tr>
-            <tr>
-                <td>제목</td>
-                <td><%=row.BRDTITLE%></td>
-            </tr>
-            <tr>
-                <td>내용</td>
-                <td><%=row.BRMEMO%></td>
-            </tr> -->
-        </tbody>
-    </table>
-</form>
+<h1 id="BOARD_NO" hidden></h1>
+<div class="container contact">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="contact-form">
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="title">제목</label>
+				  <div class="col-sm-10">    
+					<input type="text" class="form-control" id="title" name="title">
+				  </div>
+				</div>
+				<div class="form-group">
+						<label class="control-label col-sm-2" for="singer">작성자</label>
+						<div class="col-sm-10">
+						  <input type="text" class="form-control" id="writer" name="writer">
+						</div>
+					  </div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="lyrics">내용</label>
+				  <div class="col-sm-10">
+					<textarea class="form-control" rows="5" id="content"></textarea>
+				  </div>
+				</div>
+				<div class="form-group">        
+				  <div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default" id ="update" title="수정하기"> 수정</button>
+					<button  class="btn btn-default" id="delete" title="삭제하기">삭제</button>
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

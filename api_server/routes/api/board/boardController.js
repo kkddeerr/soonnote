@@ -80,3 +80,51 @@ exports.getBoardDetail = (req, res) => {
         }
     });
 }
+/** 
+ * 게시글 수정
+ * @param POST
+ */
+exports.updateBoard = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("updateBoard API Request"); 
+    console.log(req.body);
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.body.BOARD_NO);
+    value.push(req.body.BOARD_TITLE);
+    value.push(req.body.BOARD_WRITER);
+    value.push(req.body.BOARD_CONTENT);
+
+    pool.query(querys.updateBoard, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
+}
+/**
+ * 게시글 삭제
+ * 
+ */
+exports.deleteBoard = (req,res) => {
+    var pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("deleteBOARD API Request");
+
+    var value = [];
+    var param = req.query.BOARD_NO;
+    value.push(param);
+
+    pool.query(querys.deleteBoard, value, function(err,rows){
+        if(err) {
+            commonModule.errResultJSON(err,res);
+        } else {
+            //console.log(rows);
+            res.json({"Error" : false, "Message" : "Success" , "data" : ""});
+        }
+    });
+};
