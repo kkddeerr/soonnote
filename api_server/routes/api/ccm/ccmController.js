@@ -2,8 +2,18 @@ var Youtube = require("youtube-node")
 const eventListener = require('./../../../events/eventIndex');
 const querys = require('./../../../apiServerQuerys');
 const commonModule = require('./../../../modules/commonModule');
-
+const axios = require("axios");
+const cheerio = require("cheerio");
+const log = console.log;
  
+const getHtml = async (sUrl) => {
+    try {
+      return await axios.get(sUrl);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 //var Youtube = require('./../../../events/youtube-node'); 
 /**
  * Join API
@@ -237,7 +247,30 @@ exports.getYoutubeLink = (req, res) => {
 exports.getLyric = (req, res) => {
     
     let pool = require('./../../../DBConnect/mariaDBPool').pool;
-            
+    let value = [];     
+    let sUrl = "https://www.yna.co.kr/sports/all";
+    getHtml(sUrl)
+    .then(html => {
+      let ulList = [];
+      const $ = cheerio.load(html.data);
+      const $bodyList = $("div.headline-list ul").children("li.section02");
+  
+      $bodyList.each(function(i, elem) {
+        ulList[i] = {
+            title: $(this).find('strong.news-tl a').text(),
+            url: $(this).find('strong.news-tl a').attr('href'),
+            image_url: $(this).find('p.poto a img').attr('src'),
+            image_alt: $(this).find('p.poto a img').attr('alt'),
+            summary: $(this).find('p.lead').text().slice(0, -11),
+            date: $(this).find('span.p-time').text()
+        };
+      });
+  
+      const data = ulList.filter(n => n.title);
+      return data;
+    })
+    .then(res => log(res));
+
 
         //결과값 출력;
         pool.query(querys.getDual, value, (err, rows) => {  
@@ -247,7 +280,7 @@ exports.getLyric = (req, res) => {
                 res.json({
                     "Error" : false,
                     "Message" : "Success",
-                    "data" : items
+                    "data" : ''
                 });
             }
         });

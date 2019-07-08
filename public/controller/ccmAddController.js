@@ -76,6 +76,7 @@ $(document).ready(function() {
             }  
         });
     });
+    
     $("#ccmReg").click(() => {
         
         //제목

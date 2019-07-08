@@ -75,6 +75,14 @@ $( document ).ready(function() {
 			url: '#/boardDetail/:BOARD_NO',
 			templateUrl: 'view/boardDetail.html',
 			viewModel : vm["getboardDetail"]
+<<<<<<< HEAD
+=======
+		}
+
+		routes['conferenceRegistry'] = {
+			url: '#/conferenceRegistry'	,
+			templateUrl: 'view/conferenceRegistry.html'
+>>>>>>> fcea43de76d2683be554a73aa56ebc75a89c1ea6
 		};
 
 		$.router
