@@ -33,10 +33,6 @@ $(document).ready(function() {
         $(location).attr('href', '#/ccmAdd');
     } );
 
-    $("#regCcm").click(() => { 
-        $(location).attr('href', '#/ccmAdd');
-    } );
-
     $(document).off("click").on("click", "#example-table-1 tbody tr", function(){
     
      
@@ -81,16 +77,16 @@ $(document).ready(function() {
 
     
             console.log('확인 클릭'); 
-            $(location).attr('href', '#/ccmDetail/'+cmid);
+          
             //상세보기 페이지로 이동.
-          /*   Common.Dialog.confirm({
+            Common.Dialog.confirm({
                 content: '해당 노래['+userid+']의 상세보기로 이동하시겠습니까?'
                 ,ok: function(){
                     console.log('확인 클릭'); 
-                     
+                    $(location).attr('href', '#/ccmDetail/'+cmid);
                     
                 } 
-            }); */ 
+            }); 
     });
 
 });  
