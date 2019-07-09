@@ -107,7 +107,6 @@ const querys = {
                         , BOARD_CONTENT
                         FROM sn_board
                         WHERE BOARD_NO = ?;`
-<<<<<<< HEAD
     ,updateBoard: `UPDATE sn_board 
                         SET BOARD_TITLE = ?
                           , BOARD_WRITER = ?
@@ -115,9 +114,7 @@ const querys = {
                           , BOARD_DATE = NOW()     
                       WHERE BOARD_NO = ?;`
     ,deleteBoard: `DELETE FROM sn_board
-                     WHERE BOARD_NO = ? ;
-                    `
-=======
+                     WHERE BOARD_NO = ? ;`
 
     /*******************************
      * 수련회 관련 쿼리
@@ -125,7 +122,6 @@ const querys = {
    ,checkRegistryID : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_ID=?;"
    ,checkRegistryPhone : "select count(*) as count from sn_conference_applicant where CONF_NO=? and APP_PHONE=?;"
    ,confRegistry : "insert into sn_conference_applicant (CONF_NO, APP_ID, APP_NAME, APP_PHONE, SC_NUM) values (?, ?, ?, ?, ?);"
->>>>>>> fcea43de76d2683be554a73aa56ebc75a89c1ea6
 }; 
 
 module.exports = querys;
