@@ -164,5 +164,9 @@ $(document).ready(function() {
 
 
     });
+     //목록보기 버튼 onclick
+     $("#showList").click(() => {  
+        $(location).attr('href', '#/ccm');
+    });
 });
 

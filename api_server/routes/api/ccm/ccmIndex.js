@@ -11,4 +11,5 @@ router.get('/getYoutubeLink',ccmController.getYoutubeLink);
 router.get('/getLyric',ccmController.getLyric);
 router.post('/ccmUdate',ccmController.ccmUdate);
 router.post('/ccmDelete',ccmController.ccmDelete);
+router.post('/updLookupCnt',ccmController.updLookupCnt);
 module.exports = router;   

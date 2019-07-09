@@ -111,7 +111,7 @@ exports.ccmUdate = (req, res) => {
 }
 //ccmDelete
 /** 
- * ccm게시판 수정
+ * ccm게시판 삭제
  * @param POST
  */
 exports.ccmDelete = (req, res) => {
@@ -285,4 +285,30 @@ exports.getLyric = (req, res) => {
             }
         });
 
+}
+
+
+/** 
+ * ccm게시판 수정
+ * @param POST
+ */
+exports.updLookupCnt = (req, res) => {
+    let pool = require('./../../../DBConnect/mariaDBPool').pool;
+    console.log("updLookupCnt API Request"); 
+    console.log(req.body);
+    // 쿼리 prepared statement
+    let value = [];
+    value.push(req.body.CM_ID);
+
+    pool.query(querys.updLookupCnt, value, (err, rows) => {
+        if(err) {
+            commonModule.errResultJSON(err, res);
+        } else {
+            res.json({
+                "Error" : false,
+                "Message" : "Success",
+                "data" : rows
+            });
+        }
+    });
 }

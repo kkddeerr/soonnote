@@ -89,7 +89,10 @@ const querys = {
                         AND DEL_YN != 'Y';   
                     `
     ,getDual : `SELECT 1 FROM DUAL;`
-    
+    ,updLookupCnt : `UPDATE sn_ccm 
+                        SET CM_LOOKUP_COUNT = IFNULL(CM_LOOKUP_COUNT,0) + 1   
+                      WHERE CM_ID = ? 
+                        AND DEL_YN != 'Y';`
     /*******************************
      * 게시판 관련 쿼리
     *******************************/

@@ -83,7 +83,32 @@ $(document).ready(function() {
                 content: '해당 노래['+userid+']의 상세보기로 이동하시겠습니까?'
                 ,ok: function(){
                     console.log('확인 클릭'); 
-                    $(location).attr('href', '#/ccmDetail/'+cmid);
+
+                    /*조회수 1증가.  TODO 차후 세션 도입과 관련하여 수정할 로직.*/
+                    $.ajax({
+                    
+                        url: "http://localhost:8071/api/ccm/updLookupCnt", //수정
+                        type: "post",
+                        dataType: "json",
+                        data:{"CM_ID":cmid
+                            },
+                    
+                        success: (responseData) => {
+                            let error = responseData.Error;
+                            console.log(responseData.data);
+                            if(error === false) { // 성공했다면
+                                alert("조회수 증가");
+                                $(location).attr('href', '#/ccmDetail/'+cmid);
+                            }
+                        },
+                        error: (xhr, status, error) => {
+                            console.log(error);
+                        }
+                    }); 
+
+
+
+                   
                     
                 } 
             }); 
