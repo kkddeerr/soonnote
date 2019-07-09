@@ -177,14 +177,21 @@ exports.login = (req, res) => {
 exports.loginCheck = (req, res) => {
     console.log("loginCheck API Request");
 
-    // 쿼리 prepared statement
-    let jwt_value = req.body.jwt;
+    if(req.body.jwt === "") {
+        res.json({
+            "Error" : false,
+            "Message" : "Fail",
+            "data" : false
+        });
+    } else {
+        let jwt_value = req.body.jwt;
 
-    let result = commonModule.tkVerify(req, jwt_value);
+        let result = commonModule.tkVerify(req, jwt_value);
 
-    res.json({
-        "Error" : false,
-        "Message" : "Success",
-        "data" : result
-    });
+        res.json({
+            "Error" : false,
+            "Message" : "Success",
+            "data" : result
+        });
+    }
 }
