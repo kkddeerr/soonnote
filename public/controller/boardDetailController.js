@@ -71,13 +71,13 @@ $(document).ready(function() {
                         console.log(responseData.data);
                         if(error === false) { // 성공했다면
                             alert("수정완료");
+                            $(location).attr('href', '#/board');
                         }
                     },
                     error: (xhr, status, error) => {
                         console.log(error);
                     }
                 });              
-                
             } 
         }); 
     });

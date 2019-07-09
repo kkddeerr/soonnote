@@ -90,10 +90,10 @@ exports.updateBoard = (req, res) => {
     console.log(req.body);
     // 쿼리 prepared statement
     let value = [];
-    value.push(req.body.BOARD_NO);
     value.push(req.body.BOARD_TITLE);
     value.push(req.body.BOARD_WRITER);
     value.push(req.body.BOARD_CONTENT);
+    value.push(req.body.BOARD_NO);
 
     pool.query(querys.updateBoard, value, (err, rows) => {
         if(err) {
@@ -116,15 +116,16 @@ exports.deleteBoard = (req,res) => {
     console.log("deleteBOARD API Request");
 
     var value = [];
-    var param = req.query.BOARD_NO;
+    var param = req.body.BOARD_NO;
     value.push(param);
-
     pool.query(querys.deleteBoard, value, function(err,rows){
         if(err) {
             commonModule.errResultJSON(err,res);
         } else {
-            //console.log(rows);
-            res.json({"Error" : false, "Message" : "Success" , "data" : ""});
+            res.json({
+                "Error" : false, 
+                "Message" : "Success" , 
+                "data" : rows});
         }
     });
 };
