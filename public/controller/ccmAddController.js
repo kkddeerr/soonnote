@@ -4,56 +4,74 @@ $(document).ready(function() {
 
 
     $("#youtube").click(function(){
+        let youText = $(this).text();
         
-        let sSinger = $("#singer").val();
-        let sTitle = $("#title").val()
-        
-        if(sTitle === '' ){
-            alert('제목을 입력하세요.');
-            $("#title").focus();
-            return false;
-        }
-        if(sSinger === '' ){
-            alert('가수를 입력하세요');
-            $("#singer").focus();
-            return false;
-        }
-        //검색할 단어.
-        let sSrchWord = sSinger+' '+sTitle;
+        if(youText === '유투브 link'){
+            let sSinger = $("#singer").val();
+            let sTitle = $("#title").val()
+            
+            if(sTitle === '' ){
+                alert('제목을 입력하세요.');
+                $("#title").focus();
+                return false;
+            }
+            if(sSinger === '' ){
+                alert('가수를 입력하세요');
+                $("#singer").focus();
+                return false;
+            }
+            //검색할 단어.
+            let sSrchWord = sSinger+' '+sTitle;
 
-        $.ajax({
-             //url: "http://222.117.225.28:8071/api/ccm/getYoutubeLink",
-             url: "http://localhost:8071/api/ccm/getYoutubeLink",
-             type: "get", 
-             dataType: "json",
-             data: {"word":sSrchWord},
-             success: (responseData) => {
-                 
-                 console.log('getYoutubeLink 성공');
-                 let data = responseData.data;
-                 console.log(data);
-                 for (var i in data) { 
-                    var it = data[i];
-                    var title = it["snippet"]["title"];
-                    var video_id = it["id"]["videoId"];
-                    var url = "https://www.youtube.com/embed/" + video_id;
-                    console.log("제목 : " + title); 
-                    console.log("URL : " + url);
-                    console.log("-----------");
-                    //<iframe src="https://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315"></iframe>
-                    //<iframe width="560" height="315" src="https://www.youtube.com/embed/roh3jsvkTZ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
-                    let option = $(`<iframe width="300" height="200" src="`+url+`" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
-                    $("#video-container").append(option);
-                 }
-               
-             },
-             error: (xhr, status, error) => {
-                 console.log(error);
-                 console.log('getYoutubeLink error');
-                 alert(error); 
-             }  
-         });
-
+            $.ajax({
+                //url: "http://222.117.225.28:8071/api/ccm/getYoutubeLink",
+                url: "http://localhost:8071/api/ccm/getYoutubeLink",
+                type: "get", 
+                dataType: "json",
+                data: {"word":sSrchWord},
+                success: (responseData) => {
+                    
+                    console.log('getYoutubeLink 성공');
+                    let data = responseData.data;
+                    console.log(data);
+                    let option = $(``);
+                    $("#video-container").html(option);
+                    //youtube 링크 하단 radio div 활성
+                    $("#y_radio").attr('style',"display:inline;"); 
+                    let j = 0; 
+                    for (var i in data) { 
+                        var it = data[i];
+                        var title = it["snippet"]["title"];
+                        var video_id = it["id"]["videoId"];
+                        var url = "https://www.youtube.com/embed/" + video_id;
+                        console.log("제목 : " + title); 
+                        console.log("URL : " + url);
+                        console.log("-----------");
+                        j++;
+                        $('input[id="y'+j+'"]').val(url);
+                        //<iframe src="https://www.youtube.com/embed/dFVxGRekRSg" frameborder="0" width="560" height="315"></iframe>
+                        //<iframe width="560" height="315" src="https://www.youtube.com/embed/roh3jsvkTZ0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+                        option = $(`<iframe width="240" height="170" src="`+url+`" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`);
+                        $("#video-container").append(option);
+                        $(this).html("유투브 reset");
+                    }
+                
+                },
+                error: (xhr, status, error) => {
+                    console.log(error);
+                    console.log('getYoutubeLink error');
+                    alert(error); 
+                }  
+            });
+        }else{
+            /* $(this).html("유투브 link");
+            
+            $('input[name="chk_youtube"]').prop('checked',false);
+            //youtube 링크 하단 radio div 활성
+            $("#y_radio").attr('style',"display:none;"); 
+            let option = $(``);
+            $("#video-container").html(option); */
+        }
     });
 
     $("#crawing").click(function(){
@@ -89,6 +107,10 @@ $(document).ready(function() {
         let sContent = $("#content").val();
 
         let sCmId = "" ; //임의 id부여 차후 채번모듈추가예정.
+        //유투브 노래 링크
+        let sCmSong = $('input[name="chk_youtube"]:checked').val();
+    
+        //$('input[name="rdColors"]:checked').val();
         console.log(sTitle); 
         //validation check
 
@@ -138,7 +160,7 @@ $(document).ready(function() {
                             ,"CM_CONTENT":sContent 
                             ,"CM_SINGER":sSinger
                             ,"CM_IMAGE":""
-                            ,"CM_SONG":""
+                            ,"CM_SONG":sCmSong
                             ,"CM_THEME":""
                             ,"CM_LOOKUP_COUNT":""
                             ,"CM_USER":"김민수"

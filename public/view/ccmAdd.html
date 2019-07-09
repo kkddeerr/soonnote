@@ -1,37 +1,59 @@
 <script src="../controller/ccmAddController.js"></script>
-<p><h1>등록</h1></p>
-
-
-    <form method="post" action="/ccmReg" onsubmit="onWriteSubmit()"></form> 
-      <table >
-        <tr>
-          <th>제목</th>
-          <td><input type="text" name="title" id="title"/></td>
-        </tr>
-        <tr>
-            <th>가수</th>
-            <td><input type="text" name="singer" id="singer" /><button id = "youtube">유투브 link</button></td>
-            
-            <tr><div id = "video-container" class="video-container">
-               <!--  <iframe src="https://www.youtube.com/watch?v=roh3jsvkTZ0" frameborder="0" width="560" height="315"></iframe> -->
-               <!-- <iframe width="560" height="315" src="https://www.youtube.com/watch?v=cmvL6ppJHO8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+<div class="container contact">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="contact-info">
+				<img src="https://image.ibb.co/kUASdV/contact-image.png" alt="image"/>
+				<P><h4> 노래  </h4></P>
+				<P><h4>신규등록</h4></P>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="contact-form">
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="title">제목</label>
+				  <div class="col-sm-10">          
+					<input type="text" class="form-control" id="title" placeholder="Enter Song Name" name="title">
+				  </div>
+				</div>
+				<div class="form-group">
+						<label class="control-label col-sm-2" for="singer">가수</label>
+						<div class="col-sm-10">
+              <input type="text" class="form-control" id="singer" placeholder="Enter Singer" name="singer">
+              <button id = "youtube">유투브 link</button> 
+              <div id="y_radio" style="display:none">
+                <input type="radio" name ="chk_youtube" id="y1" value="y1"> 1번
+                <input type="radio" name ="chk_youtube" id="y2" value="y2"> 2번
+                <input type="radio" name ="chk_youtube" id="y3" value="y3"> 3번
               </div>
-          </tr>
-          </tr>
-        <th>가사</th>
-            <td><textarea cols="50" role="12" name="lyrics" id="lyrics" ></textarea></td>
-          </tr>
-        <tr>
-          <th>내용</th>
-          <td><textarea cols="50" role="12" name="content" id="content" ></textarea></td>
-        </tr> 
-        <tr>
-          <!-- <td colspan="2"><input type="submit" value="등록" display="none"></td> -->
-        </tr>
-      </table>
-    </form>
-    <button type="button" id="ccmReg">등록</button>
-    <button type="button" id="crawing">크롤링테스트</button> 
+              </div>
+					  </div>
+        <div id = "video-container" class="form-group">
+
+        </div>
+				<div class="form-group">
+				  <label class="control-label col-sm-2" for="lyrics">가사</label>
+				  <div class="col-sm-10">
+					<textarea class="form-control" rows="5" id="lyrics"></textarea>
+				  </div>
+				</div>
+				<div class="form-group">
+						<label class="control-label col-sm-2" for="content">comment</label>
+						<div class="col-sm-10">
+						  <textarea class="form-control" rows="5" id="content"></textarea>
+						</div>
+				</div>
+				<div class="form-group">        
+				  <div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default" id ="ccmReg" title="신규등록">등록</button>
+					<button  class="btn btn-default" id="crawing" title="크롤링테스트">크롤링테스트</button>
+			
+				  </div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
   <script>
     function onWriteSubmit()
     {
