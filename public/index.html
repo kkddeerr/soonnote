@@ -22,12 +22,17 @@
     <!-- 각 페이지의 Controller는 해당 페이지에서 Import해서 사용한다. -->
     <script>
         $(document).ready(function() {
+            var jwt;
+
             $.ajax({
                 url: "http://localhost:8091/getsession",
                 type: "get",
                 dataType: "json",
+                async:false,
                 success: (responseData) => {
                     if(responseData.Message === "Success") {
+                        jwt = responseData.data;
+                    } else {
                         console.log(responseData.data);
                     }
                 },
@@ -35,7 +40,10 @@
                     console.log(error);
                 }
             });
+            
+            console.log(jwt);
         });
+
     </script>
     <!-- 부트스트랩  -->
     <link href="/lib/css/bootstrap.min.css" rel="stylesheet">

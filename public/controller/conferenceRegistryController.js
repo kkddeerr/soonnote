@@ -3,6 +3,21 @@
 */
 
 $(document).ready(function() {
+    var jwt;
+
+    $.ajax({
+        url: "http://localhost:8091/getsession",
+        type: "get",
+        dataType: "json",
+        async:false,
+        success: (responseData) => {
+            jwt = responseData.data;
+        },
+        error: (xhr, status, error) => {
+            console.log(error);
+        }
+    });
+
     $.ajax({
         //url: "http://222.117.225.28:8071/api/user/getAllLocation",
         url: "http://localhost:8071/api/user/getAllLocation",

@@ -169,3 +169,22 @@ exports.login = (req, res) => {
         }
     });
 }
+
+/**
+ * 로그인 체크
+ * @param POST
+ */
+exports.loginCheck = (req, res) => {
+    console.log("loginCheck API Request");
+
+    // 쿼리 prepared statement
+    let jwt_value = req.body.jwt;
+
+    let result = commonModule.tkVerify(req, jwt_value);
+
+    res.json({
+        "Error" : false,
+        "Message" : "Success",
+        "data" : result
+    });
+}
