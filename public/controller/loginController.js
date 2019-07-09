@@ -3,7 +3,7 @@
 */
 
 $(document).ready(function() {
-    var jwt;
+    var jwt = "";
 
     $.ajax({
         url: "http://localhost:8091/getsession",
