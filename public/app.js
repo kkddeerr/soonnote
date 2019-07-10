@@ -1,4 +1,3 @@
-
 $( document ).ready(function() {
 
 	//페이지 추가시 

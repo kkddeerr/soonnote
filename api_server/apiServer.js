@@ -1,6 +1,7 @@
 var express = require("express"),           // 4
     bodyParser  = require("body-parser"),   // api 통신 규격
     cors = require('cors'),
+    logger = require('morgan'),
    // Youtube = require("youtube-node"),
     serverEvent = require("./events/eventIndex");   
 var config = require("./../serverConfig");
@@ -17,6 +18,7 @@ var configureExpress = function (next) {
     app.use(bodyParser.urlencoded({ extended: true }));
     app.use(bodyParser.json());
     app.use(cors());
+    app.use(logger("short"));
     app.set('jwt-secret', 'SeCrEtKeYfOrHaShInG');
     
     // DB Connection

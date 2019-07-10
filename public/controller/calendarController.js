@@ -20,7 +20,7 @@ $( document ).ready(function() {
                 data :{"CA_EVDATE" :commonModule.time.getYear() },
                 success: (responseData) => {
                     var data = responseData.data;
-                    maxEventid = responseData.data[0].CA_MAXID;
+                    //maxEventid = responseData.data[0].CA_MAXID;
                     for(let i=0 ; i < data.length ; i++) {
                         let st = data[i].CA_EVDATE.substring(0,4);
                         let mi = data[i].CA_EVDATE.substring(4,6);

@@ -14,10 +14,28 @@
     <script src="/lib/js/jq-router.js"></script>
     <script src="/common/view-model.js"></script>
     <script src="/common/commonModule.js"></script>
+    <script src="/common/modalCommon.js"></script>
+    <script src="/lib/js/bootstrap.min.js"></script> 
+    <script src="/lib/js/jquery.fancybox.pack.js"></script> 
+    <script src="/lib/js/jquery.waypoints.min.js"></script> 
+    <script src="/lib/js/retina.min.js"></script> 
+    <script src="/lib/js/modernizr.js"></script> 
+    <!-- <script src="/lib/js/main.js"></script> -->
+    
+    <!-- Load CSS-->
+    <link rel="stylesheet" href="/lib/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/css/jquery.fancybox.css">
+    <link rel="stylesheet" href="/lib/css/main.css">
+    <link rel="stylesheet" href="/lib/css/responsive.css">
+    <link rel="stylesheet" href="/lib/css/animate.min.css">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="/lib/css/sticky-footer-navbar.css" >
 
 
     <!-- Load Module-->
     <script src="app.js"></script>
+    <script src="/lib/js/main.js"></script>
+    
 
     <!-- 각 페이지의 Controller는 해당 페이지에서 Import해서 사용한다. -->
     <script>
@@ -59,9 +77,9 @@
      <!-- Fixed navbar -->
 <!--메뉴바 추가 부분-->
 
-<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!--<nav class="navbar navbar-expand-sm navbar-dark bg-dark">
 
-    <!-- 부트스트랩 연습 겸 네비바 추가 2019.06.04 -->
+     부트스트랩 연습 겸 네비바 추가 2019.06.04 
     <a class="navbar-brand" href="#">SoonNote</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -106,14 +124,48 @@
 
     <div class="menu">
         <a href="#/">Main</a> | <a href="#/calendar">Calendar</a> | <a href="#/join">Join</a> | <a href="#/ccm">CCM</a> | <a href="#/board">게시판</a> | <a href="#/login">로그인</a>
-    </div>
+    </div> -->
 
+    <section id="banner" class="banner" role="banner">
+        <header id="header"> 
+          <!-- navigation section  -->
+          <div class="header-content clearfix"> <a class="logo" href="#/"><img src="/lib/images/logo.png" alt="Mafolio"></a>
+            <nav class="navigation" role="navigation">
+              <ul class="primary-nav">
+                <li><a href="#/">Home</a></li>
+                <li><a href="#/join">Join</a></li>
+                <li><a href="#/calendar">Calendar</a></li>
+                <li><a href="#/ccm">CCM</a></li>
+                <li><a href="#/board">Board</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">수련회</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                        <a class="dropdown-item" href="#/summerConference2019">2019년 여름수련회</a>
+                    </div>
+                </li>
+              </ul>
+            </nav>
+            <a href="#" class="nav-toggle">Menu<span></span></a> </div>
+          <!-- navigation section  --> 
+        </header>
+        
+        <!-- banner text -->
+        <div class="container">
+          <div class="">
+            <div class="banner-text text-center">
+              <h1>SOON NOTE</h1>
+              <!-- banner text --> 
+            </div>
+          </div>
+        </div>
+      </section>
 
 
     <!-- 실제 View가 그려지는 부분-->
     <!--시작 -->
     <div class="my-view"></div>
     <!--끝 -->
+    </body>
 
     <!-- footer -->
 
