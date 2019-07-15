@@ -48,7 +48,7 @@ $(document).ready(function() {
         
             // tr.text()는 클릭된 Row 즉 tr에 있는 모든 값을 가져온다.
             console.log("클릭한 Row의 모든 데이터 : "+tr.text());
-        
+           
             // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
             td.each(function(i){
                 tdArr.push(td.eq(i).text());
