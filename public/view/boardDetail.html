@@ -1,4 +1,5 @@
 <script src="../controller/boardDetailController.js"></script>
+<script src="../common/modalCommon.js"></script>
 
 <h1 id="BOARD_NO" hidden></h1>
 <div class="container contact">
@@ -6,30 +7,62 @@
 		<div class="col-md-9">
 			<div class="contact-form">
 				<div class="form-group">
-				  <label class="control-label col-sm-2" for="title">제목</label>
-				  <div class="col-sm-10">    
-					<input type="text" class="form-control" id="title" name="title">
-				  </div>
+					<label class="control-label col-sm-2" for="title">제목</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="title" name="title" readonly="readonly">
+					</div>
 				</div>
 				<div class="form-group">
-						<label class="control-label col-sm-2" for="singer">작성자</label>
-						<div class="col-sm-10">
-						  <input type="text" class="form-control" id="writer" name="writer">
-						</div>
-					  </div>
-				<div class="form-group">
-				  <label class="control-label col-sm-2" for="lyrics">내용</label>
-				  <div class="col-sm-10">
-					<textarea class="form-control" rows="5" id="content"></textarea>
-				  </div>
+					<label class="control-label col-sm-2" for="singer">작성자</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="writer" name="writer" readonly="readonly">
+					</div>
 				</div>
-				<div class="form-group">        
-				  <div class="col-sm-offset-2 col-sm-10">
-					<button type="submit" class="btn btn-default" id ="update" title="수정하기"> 수정</button>
-					<button  class="btn btn-default" id="delete" title="삭제하기">삭제</button>
-				  </div>
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="lyrics">내용</label>
+					<div class="col-sm-10">
+						<textarea class="form-control" rows="5" id="content" readonly="readonly"></textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						<button type="button" class="btn btn-sm btn-primary" id="update" title="수정하기"> 수정</button>
+						<button type="button" class="btn btn-sm btn-danger" id="delete" title="삭제하기">삭제</button>
+						<button type="button" class="btn btn-sm btn-primary" id="backBtn" title="돌아가기"> 돌아가기</button>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<!--
+<div class="col-md-12">
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group-row">
+				  <label class="col-md-9" style="text-align: center; font-size: 20px;" for="title">제목</label>
+				      <input type="text" class="form-control" id="title" name="title" readonly="readonly">
+					<div class="col-md-9" style="text-align: center; font-size: 20px;" id="title" name="title"> 
+				</div>
+			</div>
+			<div class="form-group-row">
+					<label class="col-md-9" style="text-align: center; font-size: 20px;" for="singer">작성자</label>
+					<div class="col-md-9" id="writer" style="text-align: center; font-size: 20px;" name="writer">
+					  <input type="text" class="form-control" id="writer" name="writer">
+					</div>
+				  </div>
+			<div class="form-group-row">
+			  <label class="col-md-9" style="text-align: center; font-size: 20px;" for="lyrics">내용</label>
+			  <div class="col-md-9" style="text-align: center; font-size: 20px;" id="content">
+				 <textarea class="form-control" rows="5" id="content"></textarea> 
+			  </div>
+			</div>
+			<div class="card-footer">        
+				<button type="submit" class="btn btn-sm btn-primary" id ="update" title="수정하기"> 수정</button>
+				<button  class="btn btn-sm btn-danger" id="delete" title="삭제하기">삭제</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+-->

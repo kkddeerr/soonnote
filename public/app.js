@@ -76,6 +76,12 @@ $( document ).ready(function() {
 			viewModel : vm["getboardDetail"]
 		}
 
+		routes['boardEdit'] = {
+			url: '#/boardDetail/edit/:BOARD_NO',
+			templateUrl: 'view/boardEdit.html',
+			viewModel : vm["getboardDetail"]
+		}
+
 		routes['conferenceRegistry'] = {
 			url: '#/conferenceRegistry'	,
 			templateUrl: 'view/conferenceRegistry.html'

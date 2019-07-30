@@ -53,6 +53,12 @@ var vm = {};
     $('#BOARD_NO').text(param.BOARD_NO);
   };
 
+  vm.getboardEdit = function(route, param) {
+    //ajax 통해 해당 쿼리 조회.
+    console.log('view-model : '+param.BOARD_NO);  
+    $('#BOARD_NO').text(param.BOARD_NO);
+  };
+
   // vm.storeVM = function(route, param) {
   //   $('#categories').empty();
   //   categories.forEach(function(item, index) {

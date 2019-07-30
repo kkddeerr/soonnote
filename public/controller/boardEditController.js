@@ -28,8 +28,8 @@ $(document).ready(function() {
              alert(error); 
          }   
      });
-    //삭제버튼 onclick
-    $("#delete").click(() => {  
+     //수정버튼 onclick
+     $("#update").click(() => {
         //제목
         let boardTitle = $("#title").val();
         //작성자
@@ -38,42 +38,54 @@ $(document).ready(function() {
         let boardContent = $("#content").val();
         // boardDetail 페이지 상단 h1 태그값.
         let boardNo = $("#BOARD_NO").text(); 
-        
-        //validation check
+
+        if(boardTitle === "") {
+            alert("제목을 입력해주세요.");
+            $("#title").focus(); 
+            return false;
+        }
+        if(boardWriter === "") {
+            alert("작성자를 입력해주세요.");
+            $("#writer").focus();
+            return false;
+        }
+        if(boardContent === "") {
+            alert("내용을 입력해주세요.");
+            $("#content").focus();
+            return false;
+        } 
+        //상세보기 페이지로 이동.
         Common.Dialog.confirm({
-            content: '게시글을 삭제하시겠습니까?'
+            content: '게시글 수정하시겠습니까?'
             ,ok: function(){
                 console.log('확인 클릭'); 
                 $.ajax({
-                    url: "http://localhost:8071/api/board/boardDelete", 
+                    url: "http://localhost:8071/api/board/boardUpdate",
                     type: "post",
                     dataType: "json",
-
                     data:{"BOARD_NO":boardNo
+                        ,"BOARD_TITLE":boardTitle
+                        ,"BOARD_WRITER":boardWriter
+                        ,"BOARD_CONTENT":boardContent 
                         },
                 
                     success: (responseData) => {
                         let error = responseData.Error;
                         console.log(responseData.data);
                         if(error === false) { // 성공했다면
-                            alert("삭제완료");
+                            alert("수정완료");
                             $(location).attr('href', '#/board');
                         }
                     },
                     error: (xhr, status, error) => {
                         console.log(error);
                     }
-                });     
+                });              
             } 
         }); 
     });
+    //돌아가기 버튼 onclick
+    $("#backBtn").click(() => {  
+        $(location).attr('href', '#/boardDetail/'+ BOARD_NO);
+    });
 });  
-
-$("#update").click(() => { 
-    $(location).attr('href', '#/boardDetail/edit/' + $("#BOARD_NO").text());
-} );
-
-//돌아가기 버튼 onclick
-$("#backBtn").click(() => {  
-    $(location).attr('href', '#/board');
-});

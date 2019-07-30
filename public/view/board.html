@@ -1,9 +1,13 @@
 <script src="../controller/boardController.js"></script>    
-<script src="../common/modalCommon.js"></script>  
+<script src="../common/modalCommon.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <div class="row" style = "padding: 0px 0px 0px 30px;"></div>
-    <table id="table1" class="table table-bordered table-hover text-center">
-        <thead>
+    <table id="table1" class="table" style="text-align: center">
+        <thead class="thead-dark">
             <tr>
                 <th>번호</th>
                 <th>제목</th>
@@ -14,6 +18,7 @@
         <tbody name="board_list" id="board_list">
         </tbody>
     </table>
+
+    <button type="button" style="float:right" name="write" id="write">글쓰기</button>
 </div>
 
-<p><button type="button" name="write" id="write">글쓰기</button></p>
