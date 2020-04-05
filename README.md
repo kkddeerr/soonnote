@@ -24,3 +24,4 @@ Front end        - jquery, jq-router</br>
 //0626 checking with ipad 
 
 //0708 monday
+//200405 here is aus
